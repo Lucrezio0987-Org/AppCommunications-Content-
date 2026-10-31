@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 2,
+  "environment": "collaudo",
+  "locale": "it",
+  "contentRevision": "8152f202b37e711d1aaa75a62cb748b794532488",
+  "generatedAt": "2026-10-31T20:37:41Z",
+  "campaigns": [
+    {
+      "id": "2026-10-31-cablecheck-visual-pilot",
+      "revision": 1,
+      "targets": [
+        "cablecheck"
+      ],
+      "placements": [
+        "launch_modal",
+        "inbox",
+        "inline_promo"
+      ],
+      "startsAt": "2026-10-31T00:00:00Z",
+      "expiresAt": "2026-12-15T00:00:00Z",
+      "priority": 80,
+      "title": "CableCheck presenta le nuove campagne",
+      "body": "Le comunicazioni prendono forma: locandine e annunci visuali pubblicati centralmente, senza aggiornare l'app.",
+      "action": {
+        "kind": "open_inbox",
+        "announcementId": "2026-10-31-cablecheck-pilot"
+      },
+      "creative": {
+        "portraitHtml": "<style>\n.poster{position:relative;height:100%;width:100%;overflow:hidden;background:radial-gradient(ellipse at 70% 25%,#155440 0,#0b2b23 38%,#071512 77%);color:#effff4;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;isolation:isolate}\n.poster:before{content:\"\";position:absolute;inset:-15%;background:repeating-linear-gradient(115deg,transparent 0,transparent 32px,#a9ffe80b 33px,#a9ffe80b 34px);transform:rotate(-8deg);opacity:.65}\n.top{position:absolute;top:7%;left:8%;right:8%;display:flex;justify-content:space-between;align-items:center;z-index:2}\n.brand{font-size:clamp(12px,3.6vw,18px);font-weight:900;letter-spacing:.08em}\n.tag{font-size:clamp(8px,2.25vw,11px);letter-spacing:.12em;border:1px solid #5de2af70;color:#8cf6bc;border-radius:40px;padding:8px 11px}\n.art{position:absolute;left:50%;top:35%;transform:translate(-50%,-50%);width:min(78vw,350px);aspect-ratio:1;border-radius:50%;border:1px solid #94ffd244;box-shadow:inset 0 0 70px #53f4af18,0 0 90px #3dcf9b23;background:radial-gradient(circle,#1a7658 0,#0c3a2e 31%,#08231c 61%,transparent 72%)}\n.art:before,.art:after{content:\"\";position:absolute;inset:12%;border-radius:50%;border:2px solid #76f9b280;transform:rotate(-18deg)}\n.art:after{inset:25%;border:1px solid #9bffe144;box-shadow:0 0 45px #59faaf55}\n.battery{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-12deg);width:34%;height:46%;border:8px solid #c9ffe1;border-radius:18px;box-shadow:0 0 33px #72f6ad55,inset 0 0 26px #73eabc33}\n.battery:before{content:\"\";position:absolute;left:25%;right:25%;top:-18px;height:12px;border-radius:7px 7px 0 0;background:#c9ffe1}\n.battery:after{content:\"ϟ\";position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(64px,17vw,110px);font-weight:900;color:#8affb4;text-shadow:0 0 18px #64ffaa}\n.copy{position:absolute;bottom:8%;left:8%;right:8%;z-index:2}\n.eyebrow{font-size:clamp(10px,2.5vw,13px);letter-spacing:.19em;text-transform:uppercase;color:#8fffc8;font-weight:900}\n.headline{font-size:clamp(36px,9.4vw,58px);letter-spacing:-.07em;line-height:1.01;font-weight:950;margin:14px 0 15px;max-width:95%;text-wrap:balance}\n.deck{font-size:clamp(13px,3.7vw,18px);line-height:1.43;max-width:94%;color:#c1dfd2}\n.footer{margin-top:24px;display:flex;align-items:center;gap:10px;font-size:10px;letter-spacing:.14em;color:#a2cbb8}\n.footer:before{content:\"\";display:block;height:3px;width:30px;background:#72ffc3;border-radius:3px}\n@media(prefers-reduced-motion:no-preference){.art{animation:float 7s ease-in-out infinite}@keyframes float{0%,100%{transform:translate(-50%,-50%)}50%{transform:translate(-50%,-52%)}}}\n</style><section class=\"poster\" role=\"img\" aria-label=\"CableCheck presenta le nuove campagne\"><header class=\"top\"><span class=\"brand\">CABLECHECK<span style=\"color:#80f0b2\">.</span></span><span class=\"tag\">STUDIO / 01</span></header><div class=\"art\"><div class=\"battery\"></div></div><div class=\"copy\"><div class=\"eyebrow\">Una nuova energia</div><h1 class=\"headline\">Le novità, finalmente da vedere.</h1><div class=\"deck\">Una nuova esperienza visiva. Progettata una volta, pronta per tutte le nostre app.</div><div class=\"footer\">NOVITÀ · COLLAUDO</div></div></section>",
+        "landscapeHtml": "<style>\n.poster{position:relative;width:100%;height:100%;overflow:hidden;display:flex;align-items:center;background:radial-gradient(circle at 85% 40%,#146344 0,#092b23 40%,#081814 85%);font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:#f2fff6}\n.poster:before{content:\"\";position:absolute;inset:0;background:repeating-linear-gradient(110deg,transparent 0,transparent 22px,#a9ffe80b 23px,#a9ffe80b 24px)}\n.copy{position:relative;z-index:2;padding:8% 5.5%;max-width:72%}.eyebrow{color:#86fac1;letter-spacing:.14em;font-size:clamp(8px,2vw,11px);font-weight:900}.headline{font-size:clamp(21px,6.8vw,42px);letter-spacing:-.055em;line-height:1.04;font-weight:950;margin:9px 0 12px}.deck{color:#d1e9df;font-size:clamp(9px,2.6vw,14px);line-height:1.35}\n.orb{position:absolute;right:-7%;top:50%;transform:translateY(-50%) rotate(-16deg);width:46%;aspect-ratio:1;border-radius:50%;border:2px solid #84f1b966;box-shadow:0 0 55px #5df1af33,inset 0 0 32px #46c99077;display:grid;place-items:center;font-size:clamp(45px,14vw,110px);color:#9bffd0;font-weight:900;text-shadow:0 0 25px #69ffb5}\n</style><section class=\"poster\" role=\"img\" aria-label=\"CableCheck presenta le nuove campagne\"><div class=\"copy\"><div class=\"eyebrow\">CABLECHECK · Una nuova energia</div><h2 class=\"headline\">Le novità, finalmente da vedere.</h2><div class=\"deck\">Una nuova esperienza visiva. Progettata una volta, pronta per tutte le nostre app.</div></div><div class=\"orb\">ϟ</div></section>"
+      }
+    }
+  ]
+}

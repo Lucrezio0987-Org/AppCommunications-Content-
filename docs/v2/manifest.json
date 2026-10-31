@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 2,
+  "contentRevision": "8152f202b37e711d1aaa75a62cb748b794532488",
+  "generatedAt": "2026-10-31T20:37:41Z",
+  "environments": [
+    "collaudo",
+    "production"
+  ],
+  "locales": [
+    "it",
+    "en",
+    "es",
+    "fr",
+    "de",
+    "pt"
+  ],
+  "feeds": [
+    "v2/collaudo/campaigns.it.json",
+    "v2/collaudo/campaigns.en.json",
+    "v2/collaudo/campaigns.es.json",
+    "v2/collaudo/campaigns.fr.json",
+    "v2/collaudo/campaigns.de.json",
+    "v2/collaudo/campaigns.pt.json",
+    "v2/production/campaigns.it.json",
+    "v2/production/campaigns.en.json",
+    "v2/production/campaigns.es.json",
+    "v2/production/campaigns.fr.json",
+    "v2/production/campaigns.de.json",
+    "v2/production/campaigns.pt.json"
+  ]
+}
