@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="it">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AppCommunications Studio · Campagne visuali</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#070d0b;color:#edf9f1}
+*{box-sizing:border-box}body{margin:0}header{padding:24px clamp(18px,4vw,56px);border-bottom:1px solid #203329;display:flex;justify-content:space-between;align-items:center}
+header b{font-size:22px;letter-spacing:-1px}.version{color:#95e9b5;font-size:12px;letter-spacing:.12em}
+main{padding:24px clamp(18px,4vw,56px);display:grid;grid-template-columns:minmax(320px,1fr) minmax(300px,1fr);gap:28px;max-width:1500px;margin:auto}
+h1{font-size:27px;letter-spacing:-1px;margin:0 0 9px}p{color:#9daf9f;line-height:1.5}
+fieldset{border:1px solid #293b31;border-radius:18px;padding:18px;margin:0 0 17px;background:#101913}
+legend{font-size:12px;color:#93efa9;font-weight:800;letter-spacing:.1em;padding:0 7px}
+label{display:block;font-size:13px;margin-bottom:14px;color:#c2d1c6}input,textarea,select{margin-top:7px;width:100%;background:#08110d;color:#ebfff0;border:1px solid #30483b;border-radius:9px;padding:11px;font:inherit}
+textarea{resize:vertical;min-height:68px}#template{min-height:180px;font:12px/1.5 ui-monospace,monospace}
+button{border:0;border-radius:11px;padding:13px 17px;background:#84eeb1;color:#082317;font-weight:900;cursor:pointer;margin:4px 7px 4px 0}button.secondary{background:#1d3127;color:#dcffe6}
+.viewport{position:sticky;top:18px;align-self:start}.preview{background:#0b110e;border:1px solid #2e4938;padding:19px;border-radius:28px}
+iframe{width:100%;height:min(66vh,560px);border:0;background:#071914;border-radius:20px}
+#status{min-height:2em;font-size:13px;color:#8af6bb}.hint{font-size:12px;color:#899c8e}
+@media(max-width:900px){main{display:block}.viewport{position:static;margin:25px 0}}
+</style>
+<header><b>AppCommunications <span style="color:#8af6bb">Studio</span></b><span class="version">VISUAL CAMPAIGNS · V2</span></header>
+<main>
+<section>
+<h1>Progetta una locandina</h1>
+<p>Modifica testo e HTML/CSS, verifica la resa e scarica un JSON da proporre nella repository editoriale. Nessun contenuto viene pubblicato automaticamente.</p>
+<fieldset><legend>IDENTITÀ E CONTENUTO · ITALIANO</legend>
+<label>ID univoco<input id="id" value="2026-11-01-nuova-campagna"></label>
+<label>Titolo della notizia<input id="title" value="Una nuova esperienza"></label>
+<label>Descrizione accessibile<textarea id="body">Scopri le novità del nostro ecosistema di app.</textarea></label>
+<label>Etichetta<input id="eyebrow" value="NOVITÀ"></label>
+<label>Titolo della locandina<textarea id="headline">Le novità prendono forma.</textarea></label>
+<label>Sottotitolo<textarea id="deck">Una grafica più ricca per le comunicazioni delle nostre app.</textarea></label>
+<label>Firma<input id="footer" value="LUCREZIO0987 · STUDIO"></label>
+</fieldset>
+<fieldset><legend>DESTINAZIONE E PUBBLICAZIONE</legend>
+<label>Applicazione<select id="target"><option value="cablecheck">CableCheck</option><option value="wakecuppc">WakeCupPC</option></select></label>
+<label>Data inizio UTC<input id="start" type="datetime-local" value="2026-11-01T09:00"></label>
+<label>Data fine UTC<input id="end" type="datetime-local" value="2026-12-01T22:00"></label>
+<label>Priorità (0–100)<input id="priority" type="number" min="0" max="100" value="50"></label>
+</fieldset>
+<fieldset><legend>CREATIVITÀ HTML / CSS</legend>
+<p class="hint">Solo contenuti statici: niente JavaScript, iframe, immagini esterne, font remoti o form. Usa {{headline}}, {{eyebrow}}, {{deck}}, {{footer}}.</p>
+<label>HTML/CSS verticale<textarea id="template"></textarea></label>
+<button class="secondary" id="copyToLandscape">Copia nel formato orizzontale</button>
+<label>HTML/CSS orizzontale<textarea id="landscape"></textarea></label>
+</fieldset>
+<button id="download">Scarica bozza JSON</button><button class="secondary" id="copy">Copia JSON</button>
+<div id="status" role="status"></div>
+</section>
+<section class="viewport">
+<h1>Anteprima isolata</h1>
+<p>Il documento creativo viene mostrato in un iframe sandbox, senza script né navigazione.</p>
+<div class="preview">
+<label>Formato<select id="format"><option value="portrait">Verticale · apertura</option><option value="landscape">Orizzontale · pagina</option></select></label>
+<iframe id="preview" sandbox="" title="Anteprima locandina"></iframe>
+</div>
+<p class="hint">L'editor è una prima versione HTML/CSS. La pubblicazione richiede PR, validazione nel repository privato e promozione esplicita.</p>
+</section>
+</main>
+<script>
+const ids=['id','title','body','eyebrow','headline','deck','footer','target','start','end','priority','template','landscape'];
+const template='<style>.poster{height:100%;padding:9%;background:radial-gradient(circle at 80% 20%,#246747,#09241c 65%,#06120e);color:#f3fff6;font-family:system-ui,sans-serif;display:flex;flex-direction:column;justify-content:end;box-sizing:border-box}.eyebrow{color:#8ef9b8;font-size:13px;letter-spacing:.2em;font-weight:900}.heading{font-size:clamp(36px,10vw,62px);line-height:1.04;font-weight:900;letter-spacing:-.05em;margin:15px 0}.deck{color:#d1e3d6;line-height:1.5}</style><section class="poster"><div class="eyebrow">{{eyebrow}}</div><div class="heading">{{headline}}</div><p class="deck">{{deck}}</p></section>';
+document.getElementById('template').value=template;
+document.getElementById('landscape').value=template;
+const get=id=>document.getElementById(id).value;
+const escapeHtml=value=>String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
+function render(t){return t.replace(/{{\s*(title|body|eyebrow|headline|deck|footer)\s*}}/g,(_,field)=>escapeHtml(get(field)));}
+function preview(){
+ const which=get('format');const fragment=render(get(which==='portrait'?'template':'landscape'));
+ const frame=document.getElementById('preview');
+ frame.style.height=which==='portrait'?'min(66vh,560px)':'240px';
+ frame.srcdoc='<!doctype html><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src \'none\'; style-src \'unsafe-inline\'"><style>body{margin:0;overflow:hidden}</style>'+fragment;
+}
+function source(){
+ const locale={title:get('title'),body:get('body'),eyebrow:get('eyebrow'),headline:get('headline'),deck:get('deck'),footer:get('footer')};
+ return {schemaVersion:2,id:get('id'),revision:1,status:'draft',targets:[get('target')],environments:['collaudo'],placements:['launch_modal','inbox','inline_promo'],
+ startsAt:get('start')+':00Z',expiresAt:get('end')+':00Z',priority:Number(get('priority')),frequency:'once_per_revision',
+ localizations:{it:locale},creative:{format:'html_css_static',portraitHtmlTemplate:get('template'),landscapeHtmlTemplate:get('landscape')},action:{kind:'none'}};
+}
+document.querySelectorAll('input,textarea,select').forEach(el=>el.addEventListener('input',preview));
+document.getElementById('copyToLandscape').onclick=()=>{document.getElementById('landscape').value=get('template');preview();};
+document.getElementById('download').onclick=()=>{const data=JSON.stringify(source(),null,2);const url=URL.createObjectURL(new Blob([data],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=get('id')+'.json';a.click();URL.revokeObjectURL(url);document.getElementById('status').textContent='Bozza esportata: apri una PR editoriale per pubblicarla.';};
+document.getElementById('copy').onclick=async()=>{try{await navigator.clipboard.writeText(JSON.stringify(source(),null,2));document.getElementById('status').textContent='JSON copiato.';}catch{document.getElementById('status').textContent='La copia richiede HTTPS e permessi del browser.';}};
+preview();
+</script>
+</html>
