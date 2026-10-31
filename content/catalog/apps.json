@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "apps": [
+    {
+      "id": "cablecheck",
+      "name": "CableCheck",
+      "androidPackage": "com.lucrezio0987.cablecheck",
+      "playUrl": "https://play.google.com/store/apps/details?id=com.lucrezio0987.cablecheck",
+      "storePublished": false
+    },
+    {
+      "id": "wakecuppc",
+      "name": "WakeCupPC",
+      "androidPackage": "com.lucrezio0987.hidautoinput2",
+      "playUrl": "https://play.google.com/store/apps/details?id=com.lucrezio0987.hidautoinput2",
+      "storePublished": true
+    }
+  ]
+}
