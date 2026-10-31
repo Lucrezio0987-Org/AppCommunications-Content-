@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "families": [
+    {
+      "id": "mobile",
+      "label": "Tutte le app mobile",
+      "description": "Applicazioni per smartphone e tablet, su ogni sistema operativo"
+    },
+    {
+      "id": "desktop",
+      "label": "Software desktop",
+      "description": "Programmi per Windows, Linux e macOS"
+    },
+    {
+      "id": "web",
+      "label": "Applicazioni e servizi web",
+      "description": "Prodotti accessibili da browser"
+    }
+  ],
+  "platforms": [
+    {
+      "id": "android",
+      "label": "Android",
+      "description": "Applicazioni Android"
+    },
+    {
+      "id": "ios",
+      "label": "iOS",
+      "description": "Applicazioni iPhone e iPad"
+    },
+    {
+      "id": "windows",
+      "label": "Windows",
+      "description": "Software per Windows"
+    },
+    {
+      "id": "linux",
+      "label": "Linux",
+      "description": "Software per Linux"
+    },
+    {
+      "id": "macos",
+      "label": "macOS",
+      "description": "Software per macOS"
+    },
+    {
+      "id": "browser",
+      "label": "Browser",
+      "description": "Prodotti web"
+    }
+  ],
+  "groups": [
+    {
+      "id": "beta",
+      "label": "Anteprime e beta",
+      "description": "Prodotti selezionati per comunicazioni sperimentali"
+    },
+    {
+      "id": "opensource",
+      "label": "Progetti open source",
+      "description": "Software pubblicato o sviluppato apertamente"
+    }
+  ],
+  "products": [
+    {
+      "id": "cablecheck",
+      "name": "CableCheck",
+      "families": [
+        "mobile"
+      ],
+      "platforms": [
+        "android"
+      ],
+      "groups": [],
+      "integration": "connected"
+    },
+    {
+      "id": "wakecuppc",
+      "name": "WakeCupPC",
+      "families": [
+        "mobile"
+      ],
+      "platforms": [
+        "android"
+      ],
+      "groups": [],
+      "integration": "planned"
+    },
+    {
+      "id": "orb",
+      "name": "Orb",
+      "families": [
+        "mobile"
+      ],
+      "platforms": [
+        "android"
+      ],
+      "groups": [
+        "beta"
+      ],
+      "integration": "planned"
+    },
+    {
+      "id": "monissh",
+      "name": "MoniSSH",
+      "families": [
+        "desktop"
+      ],
+      "platforms": [
+        "windows",
+        "linux"
+      ],
+      "groups": [
+        "beta",
+        "opensource"
+      ],
+      "integration": "planned"
+    }
+  ]
+}
