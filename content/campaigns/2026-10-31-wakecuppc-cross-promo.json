@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 2,
+  "id": "2026-10-31-wakecuppc-cross-promo",
+  "revision": 1,
+  "status": "published",
+  "audiences": [
+    "family.mobile"
+  ],
+  "environments": [
+    "collaudo"
+  ],
+  "placements": [
+    "launch_modal",
+    "inbox",
+    "inline_promo"
+  ],
+  "startsAt": "2026-10-31T00:00:00Z",
+  "expiresAt": null,
+  "priority": 55,
+  "prioritySchedule": [
+    {
+      "from": "2026-10-31T00:00:00Z",
+      "level": "low"
+    }
+  ],
+  "frequency": "once_per_revision",
+  "templateId": "custom-v1",
+  "localizations": {
+    "it": {
+      "title": "Scopri WakeCupPC",
+      "body": "La nostra app per mantenere attivo il PC via Bluetooth: scopri l'app e le altre novità.",
+      "eyebrow": "ECOSISTEMA MOBILE",
+      "headline": "Il tuo PC resta sveglio.",
+      "deck": "WakeCupPC collega il tuo smartphone al computer e lo mantiene attivo via Bluetooth.",
+      "footer": "LUCREZIO0987 · APPLICAZIONI"
+    },
+    "en": {
+      "title": "Discover WakeCupPC",
+      "body": "Our Bluetooth PC-activity app: discover the app and our other updates.",
+      "eyebrow": "MOBILE ECOSYSTEM",
+      "headline": "Keep your PC awake.",
+      "deck": "WakeCupPC connects your phone and computer to keep it active over Bluetooth.",
+      "footer": "LUCREZIO0987 · APPS"
+    }
+  },
+  "notification": {
+    "it": {
+      "title": "Scopri WakeCupPC",
+      "body": "Un'altra applicazione del nostro ecosistema: scopri come funziona WakeCupPC."
+    },
+    "en": {
+      "title": "Meet WakeCupPC",
+      "body": "Discover another app in our ecosystem: WakeCupPC for your computer."
+    }
+  },
+  "actions": [
+    {
+      "id": "primary",
+      "labels": {
+        "it": "Apri nel Play Store",
+        "en": "Open on Google Play"
+      },
+      "intent": {
+        "kind": "open_store",
+        "appId": "wakecuppc"
+      }
+    },
+    {
+      "id": "secondary",
+      "labels": {
+        "it": "Leggi le novità",
+        "en": "Read the news"
+      },
+      "intent": {
+        "kind": "open_inbox",
+        "announcementId": "2026-10-31-cablecheck-pilot"
+      }
+    }
+  ],
+  "creative": {
+    "format": "html_css_static",
+    "portraitHtmlTemplate": "<style>*{box-sizing:border-box}.poster{position:relative;width:100%;height:100%;overflow:hidden;padding:8%;color:#f2fff5;background:radial-gradient(circle at 73% 29%,#176344 0,#082c22 44%,#06150f 85%);font-family:system-ui,sans-serif;display:flex;flex-direction:column;justify-content:flex-end}.ring{position:absolute;top:12%;left:18%;width:64%;aspect-ratio:1;border:2px solid #acffda80;border-radius:50%;box-shadow:0 0 75px #62ffad44,inset 0 0 50px #5ffaab26}.ring:after{content:\"\";position:absolute;inset:21%;border:5px solid #baffdc;border-radius:22% 51% 45% 40%;transform:rotate(-24deg);box-shadow:0 0 35px #70fbb355}.tag{font-weight:900;letter-spacing:.19em;color:#a3ffd0;font-size:12px}.headline{font-size:clamp(32px,9vw,60px);font-weight:950;letter-spacing:-.055em;line-height:1.02;margin:12px 0}.deck{color:#d1e4d7;line-height:1.4;font-size:clamp(14px,3.6vw,19px)}.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}.cta{font-size:13px;font-weight:850;text-decoration:none;background:#9af6c1;color:#08261a;border-radius:10px;padding:12px 15px}.cta+.cta{border:1px solid #8df5bc;background:#173f30;color:#c5ffe2}.foot{font-size:11px;letter-spacing:.15em;margin-top:17px;color:#b3d8bf}</style><section class=\"poster\"><div class=\"ring\"></div><div class=\"tag\">{{eyebrow}}</div><h1 class=\"headline\">{{headline}}</h1><p class=\"deck\">{{deck}}</p><div class=\"links\">{{cta:primary}}{{cta:secondary}}</div><div class=\"foot\">{{footer}}</div></section>",
+    "landscapeHtmlTemplate": "<style>*{box-sizing:border-box}.poster{width:100%;height:100%;position:relative;overflow:hidden;padding:6%;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(circle at 89% 29%,#1b7950,#0a2d21 47%,#07150f 100%);color:#f3fff8;font-family:system-ui,sans-serif}.halo{position:absolute;right:-3%;width:40%;aspect-ratio:1;border:2px solid #aaffd283;border-radius:50%;box-shadow:0 0 60px #67efab44}.tag{letter-spacing:.16em;color:#adffcb;font-weight:900;font-size:11px}.headline{font-size:clamp(23px,5.5vw,42px);font-weight:950;letter-spacing:-.05em;max-width:72%;line-height:1.06;margin:10px 0}.deck{color:#dbf1e2;max-width:72%;font-size:clamp(11px,2.3vw,15px)}.cta{display:inline-block;font-size:12px;font-weight:850;text-decoration:none;color:#073021;background:#9dffd0;border-radius:9px;padding:9px 14px;margin:12px 9px 0 0;max-width:max-content}</style><section class=\"poster\"><div class=\"halo\"></div><div class=\"tag\">{{eyebrow}}</div><h2 class=\"headline\">{{headline}}</h2><p class=\"deck\">{{deck}}</p><div>{{cta:primary}}{{cta:secondary}}</div></section>",
+    "inboxHtmlTemplate": "<style>*{box-sizing:border-box}.banner{position:relative;width:100%;height:100%;overflow:hidden;padding:7%;color:#f3fff7;background:radial-gradient(circle at 83% 28%,#1b7051,#092920 49%,#071710 100%);font-family:system-ui,sans-serif;display:flex;flex-direction:column;justify-content:center}.ring{position:absolute;top:-12%;right:-7%;width:48%;aspect-ratio:1;border:2px solid #a4ffd078;border-radius:50%;box-shadow:0 0 55px #62edab44}.eyebrow{color:#acffcd;font-size:11px;font-weight:900;letter-spacing:.16em}.headline{font-size:clamp(23px,5.9vw,42px);line-height:1.06;letter-spacing:-.045em;font-weight:950;max-width:77%;margin:12px 0}.deck{color:#d2e7db;font-size:clamp(11px,2.5vw,16px);max-width:76%}</style><section class=\"banner\"><div class=\"ring\"></div><div class=\"eyebrow\">{{eyebrow}}</div><h2 class=\"headline\">{{headline}}</h2><p class=\"deck\">{{deck}}</p></section>"
+  },
+  "action": {
+    "kind": "none"
+  }
+}
