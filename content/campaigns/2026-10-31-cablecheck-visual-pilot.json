@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "id": "2026-10-31-cablecheck-visual-pilot",
-  "revision": 1,
+  "revision": 2,
   "status": "published",
   "targets": [
     "cablecheck"
@@ -76,5 +76,19 @@
   "action": {
     "kind": "open_inbox",
     "announcementId": "2026-10-31-cablecheck-pilot"
-  }
+  },
+  "prioritySchedule": [
+    {
+      "from": "2026-10-31T00:00:00Z",
+      "level": "high"
+    },
+    {
+      "from": "2026-11-07T00:00:00Z",
+      "level": "medium"
+    },
+    {
+      "from": "2026-11-14T00:00:00Z",
+      "level": "low"
+    }
+  ]
 }
