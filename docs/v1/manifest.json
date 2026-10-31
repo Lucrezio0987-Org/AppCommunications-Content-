@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "contentRevision": "1b05076f4ba82e7fab26041397291eb0a0cccc38",
+  "generatedAt": "2026-10-31T17:16:14.000Z",
+  "environments": [
+    "collaudo",
+    "production"
+  ],
+  "locales": [
+    "it",
+    "en",
+    "es",
+    "fr",
+    "de",
+    "pt"
+  ],
+  "feeds": [
+    "v1/collaudo/announcements.it.json",
+    "v1/collaudo/announcements.en.json",
+    "v1/collaudo/announcements.es.json",
+    "v1/collaudo/announcements.fr.json",
+    "v1/collaudo/announcements.de.json",
+    "v1/collaudo/announcements.pt.json",
+    "v1/production/announcements.it.json",
+    "v1/production/announcements.en.json",
+    "v1/production/announcements.es.json",
+    "v1/production/announcements.fr.json",
+    "v1/production/announcements.de.json",
+    "v1/production/announcements.pt.json"
+  ]
+}
