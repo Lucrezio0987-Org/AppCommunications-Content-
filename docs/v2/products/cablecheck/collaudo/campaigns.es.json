@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 2,
+  "productId": "cablecheck",
+  "environment": "collaudo",
+  "locale": "es",
+  "contentRevision": "21b885d070a15a12a546a2c03c4fec9b552728d5",
+  "generatedAt": "2026-11-01T00:20:50Z",
+  "campaigns": [
+    {
+      "id": "2026-10-31-wakecuppc-cross-promo",
+      "revision": 2,
+      "targets": [
+        "cablecheck"
+      ],
+      "placements": [
+        "launch_modal",
+        "inbox",
+        "inline_promo"
+      ],
+      "audiences": [
+        "product.cablecheck"
+      ],
+      "startsAt": "2026-10-31T00:00:00Z",
+      "expiresAt": null,
+      "priority": 55,
+      "prioritySchedule": [
+        {
+          "from": "2026-10-31T00:00:00Z",
+          "level": "low"
+        }
+      ],
+      "templateId": "custom-v1",
+      "notification": {
+        "title": "Descubre WakeCupPC 💚",
+        "body": "Mantén activo tu PC con el móvil por Bluetooth HID. Descubre WakeCupPC en Google Play."
+      },
+      "actions": [
+        {
+          "id": "primary",
+          "label": "Ver en Google Play",
+          "intent": {
+            "kind": "open_store",
+            "appId": "wakecuppc"
+          }
+        }
+      ],
+      "title": "Descubre WakeCupPC",
+      "body": "WakeCupPC usa el móvil como dispositivo Bluetooth HID para enviar pequeños movimientos del ratón y mantener activo el PC. No requiere software en el ordenador, pero sí dispositivos compatibles.",
+      "action": {
+        "kind": "none"
+      },
+      "creative": {
+        "portraitHtml": "<style>*{box-sizing:border-box}.poster{position:relative;width:100%;height:100%;overflow:hidden;padding:8%;color:#f2fff5;background:radial-gradient(circle at 73% 29%,#176344 0,#082c22 44%,#06150f 85%);font-family:system-ui,sans-serif;display:flex;flex-direction:column;justify-content:flex-end}.ring{position:absolute;top:12%;left:18%;width:64%;aspect-ratio:1;border:2px solid #acffda80;border-radius:50%;box-shadow:0 0 75px #62ffad44,inset 0 0 50px #5ffaab26}.ring:after{content:\"\";position:absolute;inset:21%;border:5px solid #baffdc;border-radius:22% 51% 45% 40%;transform:rotate(-24deg);box-shadow:0 0 35px #70fbb355}.tag{font-weight:900;letter-spacing:.19em;color:#a3ffd0;font-size:12px}.headline{font-size:clamp(32px,9vw,60px);font-weight:950;letter-spacing:-.055em;line-height:1.02;margin:12px 0}.deck{color:#d1e4d7;line-height:1.4;font-size:clamp(14px,3.6vw,19px)}.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}.cta{font-size:13px;font-weight:850;text-decoration:none;background:#9af6c1;color:#08261a;border-radius:10px;padding:12px 15px}.cta+.cta{border:1px solid #8df5bc;background:#173f30;color:#c5ffe2}.foot{font-size:11px;letter-spacing:.15em;margin-top:17px;color:#b3d8bf}</style><section class=\"poster\"><div class=\"ring\"></div><div class=\"tag\">DE LUCREZIO0987</div><h1 class=\"headline\">Mantén activo tu PC.</h1><p class=\"deck\">Convierte tu móvil en un ratón Bluetooth HID, con temporizador y horarios semanales. Sin instalar software en el PC.</p><div class=\"links\"><a class=\"cta\" href=\"ac-action://primary\" role=\"button\">Ver en Google Play</a></div><div class=\"foot\">WAKECUPPC · ANDROID</div></section>",
+        "landscapeHtml": "<style>*{box-sizing:border-box}.poster{width:100%;height:100%;position:relative;overflow:hidden;padding:6%;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(circle at 89% 29%,#1b7950,#0a2d21 47%,#07150f 100%);color:#f3fff8;font-family:system-ui,sans-serif}.halo{position:absolute;right:-3%;width:40%;aspect-ratio:1;border:2px solid #aaffd283;border-radius:50%;box-shadow:0 0 60px #67efab44}.tag{letter-spacing:.16em;color:#adffcb;font-weight:900;font-size:11px}.headline{font-size:clamp(23px,5.5vw,42px);font-weight:950;letter-spacing:-.05em;max-width:72%;line-height:1.06;margin:10px 0}.deck{color:#dbf1e2;max-width:72%;font-size:clamp(11px,2.3vw,15px)}.cta{display:inline-block;font-size:12px;font-weight:850;text-decoration:none;color:#073021;background:#9dffd0;border-radius:9px;padding:9px 14px;margin:12px 9px 0 0;max-width:max-content}</style><section class=\"poster\"><div class=\"halo\"></div><div class=\"tag\">DE LUCREZIO0987</div><h2 class=\"headline\">Mantén activo tu PC.</h2><p class=\"deck\">Convierte tu móvil en un ratón Bluetooth HID, con temporizador y horarios semanales. Sin instalar software en el PC.</p><div><a class=\"cta\" href=\"ac-action://primary\" role=\"button\">Ver en Google Play</a></div></section>",
+        "inboxHtml": "<style>*{box-sizing:border-box}.banner{position:relative;width:100%;height:100%;overflow:hidden;padding:7%;color:#f3fff7;background:radial-gradient(circle at 83% 28%,#1b7051,#092920 49%,#071710 100%);font-family:system-ui,sans-serif;display:flex;flex-direction:column;justify-content:center}.ring{position:absolute;top:-12%;right:-7%;width:48%;aspect-ratio:1;border:2px solid #a4ffd078;border-radius:50%;box-shadow:0 0 55px #62edab44}.eyebrow{color:#acffcd;font-size:11px;font-weight:900;letter-spacing:.16em}.headline{font-size:clamp(23px,5.9vw,42px);line-height:1.06;letter-spacing:-.045em;font-weight:950;max-width:77%;margin:12px 0}.deck{color:#d2e7db;font-size:clamp(11px,2.5vw,16px);max-width:76%}</style><section class=\"banner\"><div class=\"ring\"></div><div class=\"eyebrow\">DE LUCREZIO0987</div><h2 class=\"headline\">Mantén activo tu PC.</h2><p class=\"deck\">Convierte tu móvil en un ratón Bluetooth HID, con temporizador y horarios semanales. Sin instalar software en el PC.</p></section>"
+      },
+      "creativeAssets": {
+        "portrait": {
+          "path": "v2/assets/collaudo/es/2026-10-31-wakecuppc-cross-promo-r2-portrait-82053a57a96e.html",
+          "sha256": "82053a57a96e91b7c5b8f25a7771052c5f73919c371d96cf2a113bb888892238"
+        },
+        "landscape": {
+          "path": "v2/assets/collaudo/es/2026-10-31-wakecuppc-cross-promo-r2-landscape-98ac6b1351ca.html",
+          "sha256": "98ac6b1351ca6276196eb3057f4b992a3372fb8c7be8bb49b356e7bb66326d17"
+        },
+        "inbox": {
+          "path": "v2/assets/collaudo/es/2026-10-31-wakecuppc-cross-promo-r2-inbox-b45edb65905a.html",
+          "sha256": "b45edb65905a5ddb0443e13e825e7ac75b8338926a77f6853937b721f9cb1548"
+        }
+      }
+    }
+  ]
+}

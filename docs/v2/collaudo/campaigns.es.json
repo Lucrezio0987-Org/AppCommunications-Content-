@@ -2,12 +2,12 @@
   "schemaVersion": 2,
   "environment": "collaudo",
   "locale": "es",
-  "contentRevision": "8152f202b37e711d1aaa75a62cb748b794532488",
-  "generatedAt": "2026-10-31T20:37:41Z",
+  "contentRevision": "21b885d070a15a12a546a2c03c4fec9b552728d5",
+  "generatedAt": "2026-11-01T00:20:50Z",
   "campaigns": [
     {
-      "id": "2026-10-31-cablecheck-visual-pilot",
-      "revision": 1,
+      "id": "2026-10-31-wakecuppc-cross-promo",
+      "revision": 2,
       "targets": [
         "cablecheck"
       ],
@@ -16,18 +16,56 @@
         "inbox",
         "inline_promo"
       ],
+      "audiences": [
+        "product.cablecheck"
+      ],
       "startsAt": "2026-10-31T00:00:00Z",
-      "expiresAt": "2026-12-15T00:00:00Z",
-      "priority": 80,
-      "title": "CableCheck presenta campañas visuales",
-      "body": "Las noticias del desarrollador ahora incluyen carteles y creatividades sin actualizar la aplicación.",
+      "expiresAt": null,
+      "priority": 55,
+      "prioritySchedule": [
+        {
+          "from": "2026-10-31T00:00:00Z",
+          "level": "low"
+        }
+      ],
+      "templateId": "custom-v1",
+      "notification": {
+        "title": "Descubre WakeCupPC 💚",
+        "body": "Mantén activo tu PC con el móvil por Bluetooth HID. Descubre WakeCupPC en Google Play."
+      },
+      "actions": [
+        {
+          "id": "primary",
+          "label": "Ver en Google Play",
+          "intent": {
+            "kind": "open_store",
+            "appId": "wakecuppc"
+          }
+        }
+      ],
+      "title": "Descubre WakeCupPC",
+      "body": "WakeCupPC usa el móvil como dispositivo Bluetooth HID para enviar pequeños movimientos del ratón y mantener activo el PC. No requiere software en el ordenador, pero sí dispositivos compatibles.",
       "action": {
-        "kind": "open_inbox",
-        "announcementId": "2026-10-31-cablecheck-pilot"
+        "kind": "none"
       },
       "creative": {
-        "portraitHtml": "<style>\n.poster{position:relative;height:100%;width:100%;overflow:hidden;background:radial-gradient(ellipse at 70% 25%,#155440 0,#0b2b23 38%,#071512 77%);color:#effff4;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;isolation:isolate}\n.poster:before{content:\"\";position:absolute;inset:-15%;background:repeating-linear-gradient(115deg,transparent 0,transparent 32px,#a9ffe80b 33px,#a9ffe80b 34px);transform:rotate(-8deg);opacity:.65}\n.top{position:absolute;top:7%;left:8%;right:8%;display:flex;justify-content:space-between;align-items:center;z-index:2}\n.brand{font-size:clamp(12px,3.6vw,18px);font-weight:900;letter-spacing:.08em}\n.tag{font-size:clamp(8px,2.25vw,11px);letter-spacing:.12em;border:1px solid #5de2af70;color:#8cf6bc;border-radius:40px;padding:8px 11px}\n.art{position:absolute;left:50%;top:35%;transform:translate(-50%,-50%);width:min(78vw,350px);aspect-ratio:1;border-radius:50%;border:1px solid #94ffd244;box-shadow:inset 0 0 70px #53f4af18,0 0 90px #3dcf9b23;background:radial-gradient(circle,#1a7658 0,#0c3a2e 31%,#08231c 61%,transparent 72%)}\n.art:before,.art:after{content:\"\";position:absolute;inset:12%;border-radius:50%;border:2px solid #76f9b280;transform:rotate(-18deg)}\n.art:after{inset:25%;border:1px solid #9bffe144;box-shadow:0 0 45px #59faaf55}\n.battery{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-12deg);width:34%;height:46%;border:8px solid #c9ffe1;border-radius:18px;box-shadow:0 0 33px #72f6ad55,inset 0 0 26px #73eabc33}\n.battery:before{content:\"\";position:absolute;left:25%;right:25%;top:-18px;height:12px;border-radius:7px 7px 0 0;background:#c9ffe1}\n.battery:after{content:\"ϟ\";position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(64px,17vw,110px);font-weight:900;color:#8affb4;text-shadow:0 0 18px #64ffaa}\n.copy{position:absolute;bottom:8%;left:8%;right:8%;z-index:2}\n.eyebrow{font-size:clamp(10px,2.5vw,13px);letter-spacing:.19em;text-transform:uppercase;color:#8fffc8;font-weight:900}\n.headline{font-size:clamp(36px,9.4vw,58px);letter-spacing:-.07em;line-height:1.01;font-weight:950;margin:14px 0 15px;max-width:95%;text-wrap:balance}\n.deck{font-size:clamp(13px,3.7vw,18px);line-height:1.43;max-width:94%;color:#c1dfd2}\n.footer{margin-top:24px;display:flex;align-items:center;gap:10px;font-size:10px;letter-spacing:.14em;color:#a2cbb8}\n.footer:before{content:\"\";display:block;height:3px;width:30px;background:#72ffc3;border-radius:3px}\n@media(prefers-reduced-motion:no-preference){.art{animation:float 7s ease-in-out infinite}@keyframes float{0%,100%{transform:translate(-50%,-50%)}50%{transform:translate(-50%,-52%)}}}\n</style><section class=\"poster\" role=\"img\" aria-label=\"CableCheck presenta campañas visuales\"><header class=\"top\"><span class=\"brand\">CABLECHECK<span style=\"color:#80f0b2\">.</span></span><span class=\"tag\">STUDIO / 01</span></header><div class=\"art\"><div class=\"battery\"></div></div><div class=\"copy\"><div class=\"eyebrow\">Una nueva energía</div><h1 class=\"headline\">Novedades para ver.</h1><div class=\"deck\">Una experiencia visual diseñada una vez para todas nuestras aplicaciones.</div><div class=\"footer\">NOVEDADES · PRUEBAS</div></div></section>",
-        "landscapeHtml": "<style>\n.poster{position:relative;width:100%;height:100%;overflow:hidden;display:flex;align-items:center;background:radial-gradient(circle at 85% 40%,#146344 0,#092b23 40%,#081814 85%);font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:#f2fff6}\n.poster:before{content:\"\";position:absolute;inset:0;background:repeating-linear-gradient(110deg,transparent 0,transparent 22px,#a9ffe80b 23px,#a9ffe80b 24px)}\n.copy{position:relative;z-index:2;padding:8% 5.5%;max-width:72%}.eyebrow{color:#86fac1;letter-spacing:.14em;font-size:clamp(8px,2vw,11px);font-weight:900}.headline{font-size:clamp(21px,6.8vw,42px);letter-spacing:-.055em;line-height:1.04;font-weight:950;margin:9px 0 12px}.deck{color:#d1e9df;font-size:clamp(9px,2.6vw,14px);line-height:1.35}\n.orb{position:absolute;right:-7%;top:50%;transform:translateY(-50%) rotate(-16deg);width:46%;aspect-ratio:1;border-radius:50%;border:2px solid #84f1b966;box-shadow:0 0 55px #5df1af33,inset 0 0 32px #46c99077;display:grid;place-items:center;font-size:clamp(45px,14vw,110px);color:#9bffd0;font-weight:900;text-shadow:0 0 25px #69ffb5}\n</style><section class=\"poster\" role=\"img\" aria-label=\"CableCheck presenta campañas visuales\"><div class=\"copy\"><div class=\"eyebrow\">CABLECHECK · Una nueva energía</div><h2 class=\"headline\">Novedades para ver.</h2><div class=\"deck\">Una experiencia visual diseñada una vez para todas nuestras aplicaciones.</div></div><div class=\"orb\">ϟ</div></section>"
+        "portraitHtml": "<style>*{box-sizing:border-box}.poster{position:relative;width:100%;height:100%;overflow:hidden;padding:8%;color:#f2fff5;background:radial-gradient(circle at 73% 29%,#176344 0,#082c22 44%,#06150f 85%);font-family:system-ui,sans-serif;display:flex;flex-direction:column;justify-content:flex-end}.ring{position:absolute;top:12%;left:18%;width:64%;aspect-ratio:1;border:2px solid #acffda80;border-radius:50%;box-shadow:0 0 75px #62ffad44,inset 0 0 50px #5ffaab26}.ring:after{content:\"\";position:absolute;inset:21%;border:5px solid #baffdc;border-radius:22% 51% 45% 40%;transform:rotate(-24deg);box-shadow:0 0 35px #70fbb355}.tag{font-weight:900;letter-spacing:.19em;color:#a3ffd0;font-size:12px}.headline{font-size:clamp(32px,9vw,60px);font-weight:950;letter-spacing:-.055em;line-height:1.02;margin:12px 0}.deck{color:#d1e4d7;line-height:1.4;font-size:clamp(14px,3.6vw,19px)}.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}.cta{font-size:13px;font-weight:850;text-decoration:none;background:#9af6c1;color:#08261a;border-radius:10px;padding:12px 15px}.cta+.cta{border:1px solid #8df5bc;background:#173f30;color:#c5ffe2}.foot{font-size:11px;letter-spacing:.15em;margin-top:17px;color:#b3d8bf}</style><section class=\"poster\"><div class=\"ring\"></div><div class=\"tag\">DE LUCREZIO0987</div><h1 class=\"headline\">Mantén activo tu PC.</h1><p class=\"deck\">Convierte tu móvil en un ratón Bluetooth HID, con temporizador y horarios semanales. Sin instalar software en el PC.</p><div class=\"links\"><a class=\"cta\" href=\"ac-action://primary\" role=\"button\">Ver en Google Play</a></div><div class=\"foot\">WAKECUPPC · ANDROID</div></section>",
+        "landscapeHtml": "<style>*{box-sizing:border-box}.poster{width:100%;height:100%;position:relative;overflow:hidden;padding:6%;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(circle at 89% 29%,#1b7950,#0a2d21 47%,#07150f 100%);color:#f3fff8;font-family:system-ui,sans-serif}.halo{position:absolute;right:-3%;width:40%;aspect-ratio:1;border:2px solid #aaffd283;border-radius:50%;box-shadow:0 0 60px #67efab44}.tag{letter-spacing:.16em;color:#adffcb;font-weight:900;font-size:11px}.headline{font-size:clamp(23px,5.5vw,42px);font-weight:950;letter-spacing:-.05em;max-width:72%;line-height:1.06;margin:10px 0}.deck{color:#dbf1e2;max-width:72%;font-size:clamp(11px,2.3vw,15px)}.cta{display:inline-block;font-size:12px;font-weight:850;text-decoration:none;color:#073021;background:#9dffd0;border-radius:9px;padding:9px 14px;margin:12px 9px 0 0;max-width:max-content}</style><section class=\"poster\"><div class=\"halo\"></div><div class=\"tag\">DE LUCREZIO0987</div><h2 class=\"headline\">Mantén activo tu PC.</h2><p class=\"deck\">Convierte tu móvil en un ratón Bluetooth HID, con temporizador y horarios semanales. Sin instalar software en el PC.</p><div><a class=\"cta\" href=\"ac-action://primary\" role=\"button\">Ver en Google Play</a></div></section>",
+        "inboxHtml": "<style>*{box-sizing:border-box}.banner{position:relative;width:100%;height:100%;overflow:hidden;padding:7%;color:#f3fff7;background:radial-gradient(circle at 83% 28%,#1b7051,#092920 49%,#071710 100%);font-family:system-ui,sans-serif;display:flex;flex-direction:column;justify-content:center}.ring{position:absolute;top:-12%;right:-7%;width:48%;aspect-ratio:1;border:2px solid #a4ffd078;border-radius:50%;box-shadow:0 0 55px #62edab44}.eyebrow{color:#acffcd;font-size:11px;font-weight:900;letter-spacing:.16em}.headline{font-size:clamp(23px,5.9vw,42px);line-height:1.06;letter-spacing:-.045em;font-weight:950;max-width:77%;margin:12px 0}.deck{color:#d2e7db;font-size:clamp(11px,2.5vw,16px);max-width:76%}</style><section class=\"banner\"><div class=\"ring\"></div><div class=\"eyebrow\">DE LUCREZIO0987</div><h2 class=\"headline\">Mantén activo tu PC.</h2><p class=\"deck\">Convierte tu móvil en un ratón Bluetooth HID, con temporizador y horarios semanales. Sin instalar software en el PC.</p></section>"
+      },
+      "creativeAssets": {
+        "portrait": {
+          "path": "v2/assets/collaudo/es/2026-10-31-wakecuppc-cross-promo-r2-portrait-82053a57a96e.html",
+          "sha256": "82053a57a96e91b7c5b8f25a7771052c5f73919c371d96cf2a113bb888892238"
+        },
+        "landscape": {
+          "path": "v2/assets/collaudo/es/2026-10-31-wakecuppc-cross-promo-r2-landscape-98ac6b1351ca.html",
+          "sha256": "98ac6b1351ca6276196eb3057f4b992a3372fb8c7be8bb49b356e7bb66326d17"
+        },
+        "inbox": {
+          "path": "v2/assets/collaudo/es/2026-10-31-wakecuppc-cross-promo-r2-inbox-b45edb65905a.html",
+          "sha256": "b45edb65905a5ddb0443e13e825e7ac75b8338926a77f6853937b721f9cb1548"
+        }
       }
     }
   ]

@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "contentRevision": "21b885d070a15a12a546a2c03c4fec9b552728d5",
+  "generatedAt": "2026-11-01T00:20:50Z",
+  "channels": [
+    {
+      "id": "global",
+      "label": "Tutto l’ecosistema",
+      "description": "Tutti i prodotti registrati",
+      "kind": "global"
+    },
+    {
+      "id": "family.mobile",
+      "label": "Tutte le app mobile",
+      "description": "Applicazioni per smartphone e tablet, su ogni sistema operativo",
+      "kind": "family"
+    },
+    {
+      "id": "family.desktop",
+      "label": "Software desktop",
+      "description": "Programmi per Windows, Linux e macOS",
+      "kind": "family"
+    },
+    {
+      "id": "family.web",
+      "label": "Applicazioni e servizi web",
+      "description": "Prodotti accessibili da browser",
+      "kind": "family"
+    },
+    {
+      "id": "platform.android",
+      "label": "Android",
+      "description": "Applicazioni Android",
+      "kind": "platform"
+    },
+    {
+      "id": "platform.ios",
+      "label": "iOS",
+      "description": "Applicazioni iPhone e iPad",
+      "kind": "platform"
+    },
+    {
+      "id": "platform.windows",
+      "label": "Windows",
+      "description": "Software per Windows",
+      "kind": "platform"
+    },
+    {
+      "id": "platform.linux",
+      "label": "Linux",
+      "description": "Software per Linux",
+      "kind": "platform"
+    },
+    {
+      "id": "platform.macos",
+      "label": "macOS",
+      "description": "Software per macOS",
+      "kind": "platform"
+    },
+    {
+      "id": "platform.browser",
+      "label": "Browser",
+      "description": "Prodotti web",
+      "kind": "platform"
+    },
+    {
+      "id": "product.cablecheck",
+      "label": "CableCheck",
+      "description": "Solo CableCheck",
+      "kind": "product"
+    },
+    {
+      "id": "product.wakecuppc",
+      "label": "WakeCupPC",
+      "description": "Solo WakeCupPC",
+      "kind": "product"
+    },
+    {
+      "id": "product.orb",
+      "label": "Orb",
+      "description": "Solo Orb",
+      "kind": "product"
+    },
+    {
+      "id": "product.monissh",
+      "label": "MoniSSH",
+      "description": "Solo MoniSSH",
+      "kind": "product"
+    },
+    {
+      "id": "group.beta",
+      "label": "Anteprime e beta",
+      "description": "Prodotti selezionati per comunicazioni sperimentali",
+      "kind": "group"
+    },
+    {
+      "id": "group.opensource",
+      "label": "Progetti open source",
+      "description": "Software pubblicato o sviluppato apertamente",
+      "kind": "group"
+    }
+  ],
+  "products": [
+    {
+      "id": "cablecheck",
+      "name": "CableCheck",
+      "integration": "connected",
+      "families": [
+        "mobile"
+      ],
+      "platforms": [
+        "android"
+      ],
+      "subscriptions": [
+        "global",
+        "family.mobile",
+        "platform.android",
+        "product.cablecheck"
+      ]
+    },
+    {
+      "id": "wakecuppc",
+      "name": "WakeCupPC",
+      "integration": "planned",
+      "families": [
+        "mobile"
+      ],
+      "platforms": [
+        "android"
+      ],
+      "subscriptions": [
+        "global",
+        "family.mobile",
+        "platform.android",
+        "product.wakecuppc"
+      ]
+    },
+    {
+      "id": "orb",
+      "name": "Orb",
+      "integration": "planned",
+      "families": [
+        "mobile"
+      ],
+      "platforms": [
+        "android"
+      ],
+      "subscriptions": [
+        "global",
+        "family.mobile",
+        "platform.android",
+        "product.orb",
+        "group.beta"
+      ]
+    },
+    {
+      "id": "monissh",
+      "name": "MoniSSH",
+      "integration": "planned",
+      "families": [
+        "desktop"
+      ],
+      "platforms": [
+        "windows",
+        "linux"
+      ],
+      "subscriptions": [
+        "global",
+        "family.desktop",
+        "platform.windows",
+        "platform.linux",
+        "product.monissh",
+        "group.beta",
+        "group.opensource"
+      ]
+    }
+  ]
+}

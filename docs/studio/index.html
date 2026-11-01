@@ -13,10 +13,18 @@ fieldset{border:1px solid #293b31;border-radius:18px;padding:18px;margin:0 0 17p
 legend{font-size:12px;color:#93efa9;font-weight:800;letter-spacing:.1em;padding:0 7px}
 label{display:block;font-size:13px;margin-bottom:14px;color:#c2d1c6}input,textarea,select{margin-top:7px;width:100%;background:#08110d;color:#ebfff0;border:1px solid #30483b;border-radius:9px;padding:11px;font:inherit}
 textarea{resize:vertical;min-height:68px}#template{min-height:180px;font:12px/1.5 ui-monospace,monospace}
-button{border:0;border-radius:11px;padding:13px 17px;background:#84eeb1;color:#082317;font-weight:900;cursor:pointer;margin:4px 7px 4px 0}button.secondary{background:#1d3127;color:#dcffe6}
+button{border:0;border-radius:11px;padding:13px 17px;background:#84eeb1;color:#082317;font-weight:900;cursor:pointer;margin:4px 7px 4px 0}button.secondary{background:#1d3127;color:#dcffe6}button:disabled{opacity:.38;cursor:not-allowed}
 .viewport{position:sticky;top:18px;align-self:start}.preview{background:#0b110e;border:1px solid #2e4938;padding:19px;border-radius:28px}
 iframe{width:100%;height:min(66vh,560px);border:0;background:#071914;border-radius:20px}
 #status{min-height:2em;font-size:13px;color:#8af6bb}.hint{font-size:12px;color:#899c8e}
+.audience-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin:10px 0 16px}
+.audience-option{border:1px solid #2b4536;border-radius:11px;padding:12px;display:flex;align-items:flex-start;gap:10px;margin:0;background:#09130d;cursor:pointer}
+.audience-option:has(input:checked){border-color:#86eab1;background:#103324}
+.audience-option input{width:18px;height:18px;flex:none;margin:2px 0;accent-color:#8cf0b8}
+.audience-option strong{display:block;font-size:13px;color:#effff2}.audience-option small{display:block;color:#93a999;font-size:11px;margin-top:4px;line-height:1.4}
+.recipient-list{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.recipient-chip{border:1px solid #365c47;border-radius:30px;padding:8px 11px;color:#d9f7e4;font-size:12px}
+.recipient-chip.planned{color:#b1b8b2;border-color:#314038}.recipient-chip.connected{border-color:#68d5a2}
+#audienceStatus{font-size:12px;color:#b3d5bd;line-height:1.5}
 @media(max-width:900px){main{display:block}.viewport{position:static;margin:25px 0}}
 </style>
 <header><b>AppCommunications <span style="color:#8af6bb">Studio</span></b><span class="version">VISUAL CAMPAIGNS · V2</span></header>
@@ -34,10 +42,45 @@ iframe{width:100%;height:min(66vh,560px);border:0;background:#071914;border-radi
 <label>Firma<input id="footer" value="LUCREZIO0987 · STUDIO"></label>
 </fieldset>
 <fieldset><legend>DESTINAZIONE E PUBBLICAZIONE</legend>
-<label>Applicazione<select id="target"><option value="cablecheck">CableCheck</option><option value="wakecuppc">WakeCupPC</option></select></label>
+<label>Canali di distribuzione</label>
+<p class="hint">Seleziona un prodotto, una famiglia, una piattaforma o l'intero ecosistema. Più canali si uniscono: ogni prodotto riceve la comunicazione una volta sola.</p>
+<div id="audienceOptions" class="audience-grid" role="group" aria-label="Canali destinatari"></div>
+<div id="audienceStatus" role="status"></div>
+<div id="recipientPreview" class="recipient-list" aria-live="polite"></div>
+<p class="hint">I prodotti non ancora integrati sono visibili in anteprima, ma non riceveranno notifiche finché non avranno un client collegato.</p>
+<label>Ambiente di distribuzione
+<select id="environment" aria-describedby="environmentHint">
+<option value="collaudo">Solo collaudo</option>
+<option value="production">Produzione + collaudo</option>
+</select></label>
+<p class="hint" id="environmentHint">Le campagne di collaudo non arrivano in produzione. Quelle di produzione compaiono anche in collaudo, così puoi verificarle prima o dopo la pubblicazione. Il feed di produzione rimane separato; nessun invio push automatico.</p>
 <label>Data inizio UTC<input id="start" type="datetime-local" value="2026-11-01T09:00"></label>
 <label>Data fine UTC<input id="end" type="datetime-local" value="2026-12-01T22:00"></label>
-<label>Priorità (0–100)<input id="priority" type="number" min="0" max="100" value="50"></label>
+<label>Ordine editoriale (0–100)<input id="priority" type="number" min="0" max="100" value="50"></label>
+<fieldset><legend>PRIORITÀ PROGRAMMATA</legend>
+<p class="hint">Alta: massimo una volta al giorno; media: una sola volta a chi non l'ha ancora vista; bassa: solo nello storico. Le date sono UTC.</p>
+<label><input id="scheduleEnabled" type="checkbox" checked style="width:auto;margin-right:8px"> Attiva programmazione della visualizzazione</label>
+<label>Livello iniziale<select id="initialLevel"><option value="high">Alta · una volta al giorno</option><option value="medium">Media · una sola volta</option><option value="low">Bassa · solo storico</option></select></label>
+<label>Passa a Media (lascia vuoto per saltare)<input id="mediumFrom" type="datetime-local" value="2026-11-08T09:00"></label>
+<label>Passa a Bassa (lascia vuoto per mantenere la fase precedente)<input id="lowFrom" type="datetime-local" value="2026-12-01T09:00"></label>
+<p id="scheduleStatus" class="hint" role="status"></p>
+</fieldset>
+</fieldset>
+<fieldset><legend>TEMPLATE E FORMATI</legend>
+<p class="hint">Il template definisce formati, posizionamento e regole. Le azioni usano {{cta:primary}} (mai link HTML arbitrari).</p>
+<label>Template<select id="templatePreset"><option value="product-launch-v1">Lancio applicazione</option><option value="editorial-v1">Comunicazione editoriale</option><option value="custom-v1">Personalizzato · validazione necessaria</option></select></label>
+<label>Banner dedicato per lo storico (16:9)<textarea id="inboxTemplate"></textarea></label>
+<p class="hint">In tutte le app lo storico mostra questo rettangolo; toccarlo apre la locandina integrale.</p>
+</fieldset>
+<fieldset><legend>NOTIFICA NATIVA · TESTO ITALIANO</legend>
+<p class="hint">Il testo è distinto dal banner. Viene utilizzato soltanto quando l'utente ha autorizzato le notifiche e il servizio push è configurato.</p>
+<label>Titolo (max 80)<input id="pushTitle" maxlength="80" value="Una nuova applicazione disponibile"></label>
+<label>Testo (max 180)<textarea id="pushBody" maxlength="180">Scopri tutte le novità del nostro ecosistema.</textarea></label>
+</fieldset>
+<fieldset><legend>PULSANTI DELLA LOcANDINA</legend>
+<p class="hint">Da 0 a 4 CTA native. Ogni pulsante viene creato dal publisher usando {{cta:id}}. I link esterni aggiungono source con l'ID dell'app che mostra la comunicazione.</p>
+<div id="actionEditors"></div>
+<button type="button" class="secondary" id="addAction">+ Aggiungi CTA</button>
 </fieldset>
 <fieldset><legend>CREATIVITÀ HTML / CSS</legend>
 <p class="hint">Solo contenuti statici: niente JavaScript, iframe, immagini esterne, font remoti o form. Usa {{headline}}, {{eyebrow}}, {{deck}}, {{footer}}.</p>
@@ -52,36 +95,178 @@ iframe{width:100%;height:min(66vh,560px);border:0;background:#071914;border-radi
 <h1>Anteprima isolata</h1>
 <p>Il documento creativo viene mostrato in un iframe sandbox, senza script né navigazione.</p>
 <div class="preview">
-<label>Formato<select id="format"><option value="portrait">Verticale · apertura</option><option value="landscape">Orizzontale · pagina</option></select></label>
+<label>Formato<select id="format"><option value="portrait">Verticale · apertura</option><option value="inbox">Banner · storico</option><option value="landscape">Orizzontale · inline</option></select></label>
 <iframe id="preview" sandbox="" title="Anteprima locandina"></iframe>
 </div>
 <p class="hint">L'editor è una prima versione HTML/CSS. La pubblicazione richiede PR, validazione nel repository privato e promozione esplicita.</p>
 </section>
 </main>
 <script>
-const ids=['id','title','body','eyebrow','headline','deck','footer','target','start','end','priority','template','landscape'];
+const TEMPLATE_PRESETS = [{"id":"product-launch-v1","label":"Lancio applicazione","description":"Poster immersivo, banner 16:9, notifica e pulsanti","creative":{"format":"html_css_static","portraitHtmlTemplate":"\u003cstyle>*{box-sizing:border-box}.poster{position:relative;width:100%;height:100%;overflow:hidden;padding:8%;display:flex;flex-direction:column;justify-content:flex-end;background:radial-gradient(circle at 75% 25%,#227258,#0a2d23 45%,#071812 86%);color:#f3fff7;font-family:system-ui,sans-serif}.orb{position:absolute;top:15%;left:19%;width:62%;aspect-ratio:1;border-radius:50%;border:2px solid #a4fcd080;box-shadow:0 0 80px #77ffc233,inset 0 0 80px #50ffac33}.eyebrow{font-size:12px;letter-spacing:.2em;color:#8fffc5;font-weight:800}.headline{font-size:clamp(32px,9vw,60px);line-height:1.03;letter-spacing:-.055em;font-weight:900;margin:16px 0}.deck{font-size:clamp(14px,3.6vw,19px);line-height:1.45;color:#cde5d8}.foot{margin-top:14px;font-size:11px;letter-spacing:.12em;color:#b1d3bf}.cta{display:inline-block;background:#90ffbf;color:#062819;border-radius:12px;padding:13px 18px;text-decoration:none;font-weight:900;margin-top:17px;max-width:max-content}\u003c/style>\u003csection class=\"poster\">\u003cdiv class=\"orb\">\u003c/div>\u003cdiv class=\"eyebrow\">{{eyebrow}}\u003c/div>\u003ch1 class=\"headline\">{{headline}}\u003c/h1>\u003cdiv class=\"deck\">{{deck}}\u003c/div>{{cta:primary}}\u003cdiv class=\"foot\">{{footer}}\u003c/div>\u003c/section>","landscapeHtmlTemplate":"\u003cstyle>*{box-sizing:border-box}.poster{width:100%;height:100%;overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:center;padding:7%;background:radial-gradient(circle at 90% 30%,#1b7051,#0a2d23 45%,#061710 100%);color:#f3fff7;font-family:system-ui,sans-serif}.orb{position:absolute;right:-4%;top:3%;width:44%;aspect-ratio:1;border-radius:50%;border:2px solid #a4fcd077;box-shadow:0 0 60px #77ffc222}.eyebrow{font-size:11px;letter-spacing:.14em;color:#a1ffce;font-weight:850}.headline{font-size:clamp(21px,6vw,44px);line-height:1.04;letter-spacing:-.045em;font-weight:900;max-width:76%;margin:11px 0}.deck{font-size:clamp(11px,2.4vw,15px);line-height:1.35;color:#d1e3d8;max-width:72%}.cta{display:inline-block;background:#90ffbf;color:#062819;text-decoration:none;border-radius:9px;padding:9px 14px;font-size:12px;font-weight:850;margin-top:11px;max-width:max-content}\u003c/style>\u003csection class=\"poster\">\u003cdiv class=\"orb\">\u003c/div>\u003cdiv class=\"eyebrow\">{{eyebrow}}\u003c/div>\u003ch2 class=\"headline\">{{headline}}\u003c/h2>\u003cdiv class=\"deck\">{{deck}}\u003c/div>{{cta:primary}}\u003c/section>","inboxHtmlTemplate":"\u003cstyle>*{box-sizing:border-box}.poster{width:100%;height:100%;overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:center;padding:7%;background:radial-gradient(circle at 90% 30%,#1b7051,#0a2d23 45%,#061710 100%);color:#f3fff7;font-family:system-ui,sans-serif}.orb{position:absolute;right:-4%;top:3%;width:44%;aspect-ratio:1;border-radius:50%;border:2px solid #a4fcd077;box-shadow:0 0 60px #77ffc222}.eyebrow{font-size:11px;letter-spacing:.14em;color:#a1ffce;font-weight:850}.headline{font-size:clamp(21px,6vw,44px);line-height:1.04;letter-spacing:-.045em;font-weight:900;max-width:76%;margin:11px 0}.deck{font-size:clamp(11px,2.4vw,15px);line-height:1.35;color:#d1e3d8;max-width:72%}.cta{display:inline-block;background:#90ffbf;color:#062819;text-decoration:none;border-radius:9px;padding:9px 14px;font-size:12px;font-weight:850;margin-top:11px;max-width:max-content}\u003c/style>\u003csection class=\"poster\">\u003cdiv class=\"orb\">\u003c/div>\u003cdiv class=\"eyebrow\">{{eyebrow}}\u003c/div>\u003ch2 class=\"headline\">{{headline}}\u003c/h2>\u003cdiv class=\"deck\">{{deck}}\u003c/div>\u003c/section>"}},{"id":"editorial-v1","label":"Avviso generale","description":"Titoli e contenuti con gerarchia tipografica sobria","creative":{"format":"html_css_static","portraitHtmlTemplate":"\u003cstyle>*{box-sizing:border-box}.poster{position:relative;width:100%;height:100%;overflow:hidden;padding:8%;display:flex;flex-direction:column;justify-content:flex-end;background:radial-gradient(circle at 75% 25%,#227258,#0a2d23 45%,#071812 86%);color:#f3fff7;font-family:system-ui,sans-serif}.orb{position:absolute;top:15%;left:19%;width:62%;aspect-ratio:1;border-radius:50%;border:2px solid #a4fcd080;box-shadow:0 0 80px #77ffc233,inset 0 0 80px #50ffac33}.eyebrow{font-size:12px;letter-spacing:.2em;color:#8fffc5;font-weight:800}.headline{font-size:clamp(32px,9vw,60px);line-height:1.03;letter-spacing:-.055em;font-weight:900;margin:16px 0}.deck{font-size:clamp(14px,3.6vw,19px);line-height:1.45;color:#cde5d8}.foot{margin-top:14px;font-size:11px;letter-spacing:.12em;color:#b1d3bf}.cta{display:inline-block;background:#90ffbf;color:#062819;border-radius:12px;padding:13px 18px;text-decoration:none;font-weight:900;margin-top:17px;max-width:max-content}\u003c/style>\u003csection class=\"poster\">\u003cdiv class=\"eyebrow\">{{eyebrow}}\u003c/div>\u003ch1 class=\"headline\">{{headline}}\u003c/h1>\u003cdiv class=\"deck\">{{deck}}\u003c/div>{{cta:primary}}\u003cdiv class=\"foot\">{{footer}}\u003c/div>\u003c/section>","landscapeHtmlTemplate":"\u003cstyle>*{box-sizing:border-box}.poster{width:100%;height:100%;overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:center;padding:7%;background:radial-gradient(circle at 90% 30%,#1b7051,#0a2d23 45%,#061710 100%);color:#f3fff7;font-family:system-ui,sans-serif}.orb{position:absolute;right:-4%;top:3%;width:44%;aspect-ratio:1;border-radius:50%;border:2px solid #a4fcd077;box-shadow:0 0 60px #77ffc222}.eyebrow{font-size:11px;letter-spacing:.14em;color:#a1ffce;font-weight:850}.headline{font-size:clamp(21px,6vw,44px);line-height:1.04;letter-spacing:-.045em;font-weight:900;max-width:76%;margin:11px 0}.deck{font-size:clamp(11px,2.4vw,15px);line-height:1.35;color:#d1e3d8;max-width:72%}.cta{display:inline-block;background:#90ffbf;color:#062819;text-decoration:none;border-radius:9px;padding:9px 14px;font-size:12px;font-weight:850;margin-top:11px;max-width:max-content}\u003c/style>\u003csection class=\"poster\">\u003cdiv class=\"eyebrow\">{{eyebrow}}\u003c/div>\u003ch2 class=\"headline\">{{headline}}\u003c/h2>\u003cdiv class=\"deck\">{{deck}}\u003c/div>{{cta:primary}}\u003c/section>","inboxHtmlTemplate":"\u003cstyle>*{box-sizing:border-box}.poster{width:100%;height:100%;overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:center;padding:7%;background:radial-gradient(circle at 90% 30%,#1b7051,#0a2d23 45%,#061710 100%);color:#f3fff7;font-family:system-ui,sans-serif}.orb{position:absolute;right:-4%;top:3%;width:44%;aspect-ratio:1;border-radius:50%;border:2px solid #a4fcd077;box-shadow:0 0 60px #77ffc222}.eyebrow{font-size:11px;letter-spacing:.14em;color:#a1ffce;font-weight:850}.headline{font-size:clamp(21px,6vw,44px);line-height:1.04;letter-spacing:-.045em;font-weight:900;max-width:76%;margin:11px 0}.deck{font-size:clamp(11px,2.4vw,15px);line-height:1.35;color:#d1e3d8;max-width:72%}.cta{display:inline-block;background:#90ffbf;color:#062819;text-decoration:none;border-radius:9px;padding:9px 14px;font-size:12px;font-weight:850;margin-top:11px;max-width:max-content}\u003c/style>\u003csection class=\"poster\">\u003cdiv class=\"eyebrow\">{{eyebrow}}\u003c/div>\u003ch2 class=\"headline\">{{headline}}\u003c/h2>\u003cdiv class=\"deck\">{{deck}}\u003c/div>\u003c/section>"}}];
+const routing = {"schemaVersion":1,"contentRevision":"21b885d070a15a12a546a2c03c4fec9b552728d5","generatedAt":"2026-11-01T00:20:50Z","channels":[{"id":"global","label":"Tutto l’ecosistema","description":"Tutti i prodotti registrati","kind":"global"},{"id":"family.mobile","label":"Tutte le app mobile","description":"Applicazioni per smartphone e tablet, su ogni sistema operativo","kind":"family"},{"id":"family.desktop","label":"Software desktop","description":"Programmi per Windows, Linux e macOS","kind":"family"},{"id":"family.web","label":"Applicazioni e servizi web","description":"Prodotti accessibili da browser","kind":"family"},{"id":"platform.android","label":"Android","description":"Applicazioni Android","kind":"platform"},{"id":"platform.ios","label":"iOS","description":"Applicazioni iPhone e iPad","kind":"platform"},{"id":"platform.windows","label":"Windows","description":"Software per Windows","kind":"platform"},{"id":"platform.linux","label":"Linux","description":"Software per Linux","kind":"platform"},{"id":"platform.macos","label":"macOS","description":"Software per macOS","kind":"platform"},{"id":"platform.browser","label":"Browser","description":"Prodotti web","kind":"platform"},{"id":"product.cablecheck","label":"CableCheck","description":"Solo CableCheck","kind":"product"},{"id":"product.wakecuppc","label":"WakeCupPC","description":"Solo WakeCupPC","kind":"product"},{"id":"product.orb","label":"Orb","description":"Solo Orb","kind":"product"},{"id":"product.monissh","label":"MoniSSH","description":"Solo MoniSSH","kind":"product"},{"id":"group.beta","label":"Anteprime e beta","description":"Prodotti selezionati per comunicazioni sperimentali","kind":"group"},{"id":"group.opensource","label":"Progetti open source","description":"Software pubblicato o sviluppato apertamente","kind":"group"}],"products":[{"id":"cablecheck","name":"CableCheck","integration":"connected","families":["mobile"],"platforms":["android"],"subscriptions":["global","family.mobile","platform.android","product.cablecheck"]},{"id":"wakecuppc","name":"WakeCupPC","integration":"planned","families":["mobile"],"platforms":["android"],"subscriptions":["global","family.mobile","platform.android","product.wakecuppc"]},{"id":"orb","name":"Orb","integration":"planned","families":["mobile"],"platforms":["android"],"subscriptions":["global","family.mobile","platform.android","product.orb","group.beta"]},{"id":"monissh","name":"MoniSSH","integration":"planned","families":["desktop"],"platforms":["windows","linux"],"subscriptions":["global","family.desktop","platform.windows","platform.linux","product.monissh","group.beta","group.opensource"]}]};
+const selectedAudiences = new Set(['product.cablecheck']);
+const optionsNode = document.getElementById('audienceOptions');
+function redrawRecipients() {
+  const selected = [...selectedAudiences];
+  const recipients = (routing?.products ?? []).filter(product => product.subscriptions.some(channel => selected.includes(channel)));
+  const enabled = selected.length > 0 && recipients.length > 0 && Boolean(routing);
+  document.getElementById('audienceStatus').textContent =
+    !routing ? 'Catalogo dei canali non disponibile: usa la versione compilata dello Studio.'
+    : !selected.length ? 'Seleziona almeno un canale.'
+    : recipients.length + ' prodotti destinatari (' + recipients.filter(p => p.integration === 'connected').length + ' collegati).';
+  const preview = document.getElementById('recipientPreview');
+  preview.replaceChildren();
+  for (const product of recipients) {
+    const badge = document.createElement('span');
+    badge.className = 'recipient-chip ' + product.integration;
+    badge.textContent = product.name + (product.integration === 'connected' ? ' · collegato' : ' · da integrare');
+    preview.append(badge);
+  }
+  const validSchedule = previewSchedule();
+  document.getElementById('download').disabled = !enabled || !validSchedule;
+  document.getElementById('copy').disabled = !enabled || !validSchedule;
+}
+function schedulePhases() {
+  if (!document.getElementById('scheduleEnabled').checked) return undefined;
+  const first = get('start') + ':00Z';
+  const initial = get('initialLevel');
+  const phases = [{from:first,level:initial}];
+  if (initial === 'high' && get('mediumFrom')) phases.push({from:get('mediumFrom')+':00Z',level:'medium'});
+  if (initial !== 'low' && get('lowFrom')) phases.push({from:get('lowFrom')+':00Z',level:'low'});
+  return phases;
+}
+function previewSchedule() {
+  const phases = schedulePhases();
+  const status = document.getElementById('scheduleStatus');
+  if (!phases) { status.textContent = 'Modalità tradizionale: mostra una sola volta.'; return true; }
+  const start = Date.parse(get('start') + ':00Z');
+  const end = get('end') ? Date.parse(get('end') + ':00Z') : Infinity;
+  const dates = phases.map(p => Date.parse(p.from));
+  const valid = Number.isFinite(start) && end > start && dates.every((value,index) =>
+    Number.isFinite(value) && (index === 0 ? value === start : value > dates[index - 1]) && value < end);
+  status.textContent = valid
+    ? phases.map(p=>p.level.toUpperCase()+' dal '+p.from.slice(0,16).replace('T',' ')).join(' · ')
+    : 'Date non valide: i cambi devono essere successivi all’avvio, ordinati e precedenti alla scadenza.';
+  return valid;
+}
+function setupChannels() {
+  if (!routing) { redrawRecipients(); return; }
+  for (const channel of routing.channels) {
+    const option = document.createElement('label');
+    option.className = 'audience-option';
+    const check = document.createElement('input');
+    check.type = 'checkbox';
+    check.value = channel.id;
+    check.checked = selectedAudiences.has(channel.id);
+    const copy = document.createElement('span');
+    const name = document.createElement('strong');
+    name.textContent = channel.label;
+    const hint = document.createElement('small');
+    hint.textContent = channel.description;
+    copy.append(name, hint);
+    option.append(check, copy);
+    check.addEventListener('change', () => {
+      if (check.checked) selectedAudiences.add(channel.id);
+      else selectedAudiences.delete(channel.id);
+      redrawRecipients();
+    });
+    optionsNode.append(option);
+  }
+  redrawRecipients();
+}
+
+let actionSlots = [];
+const ACTION_KINDS = [
+  ['open_store','Apri Play Store'], ['open_https','Apri sito autorizzato'],
+  ['open_inbox','Apri nelle Novità'], ['dismiss','Chiudi la locandina']
+];
+function redrawActionEditors() {
+  const box=document.getElementById('actionEditors');
+  box.replaceChildren();
+  for(const action of actionSlots) {
+    const section=document.createElement('div');
+    section.style='border:1px solid #365443;padding:12px;border-radius:11px;margin-bottom:10px';
+    section.innerHTML='<p class="hint">Usa il segnaposto {{cta:'+action.id+'}} nel poster.</p>';
+    const label=document.createElement('label');label.textContent='Testo del pulsante';
+    const input=document.createElement('input');input.value=action.label;input.maxLength=48;
+    input.oninput=()=>{action.label=input.value;preview();};
+    label.append(input);section.append(label);
+    const type=document.createElement('label');type.textContent='Comportamento';
+    const select=document.createElement('select');
+    for(const [id,title] of ACTION_KINDS){const option=document.createElement('option');option.value=id;option.textContent=title;select.append(option);}
+    select.value=action.kind;type.append(select);section.append(type);
+    const value=document.createElement('label');value.textContent='App ID, ID notizia oppure URL';
+    const detail=document.createElement('input');detail.value=action.value;detail.placeholder='wakecuppc, ID della notizia oppure HTTPS';
+    const refresh=()=>{action.kind=select.value;detail.disabled=action.kind==='dismiss';preview();};
+    select.onchange=refresh;detail.oninput=()=>{action.value=detail.value;};
+    value.append(detail);section.append(value);
+    const remove=document.createElement('button');remove.type='button';remove.className='secondary';remove.textContent='Rimuovi CTA';
+    remove.onclick=()=>{actionSlots=actionSlots.filter(x=>x!==action);redrawActionEditors();preview();};
+    section.append(remove);box.append(section);
+    refresh();
+  }
+  document.getElementById('addAction').disabled=actionSlots.length>=4;
+}
+function editorialActions() {
+ return actionSlots.map(a=>({
+   id:a.id,labels:{it:a.label},
+   intent:a.kind==='dismiss'?{kind:'dismiss'}:
+     a.kind==='open_store'?{kind:'open_store',appId:a.value}:
+     a.kind==='open_inbox'?{kind:'open_inbox',announcementId:a.value}:
+     {kind:'open_https',url:a.value}
+ }));
+}
+function applyPreset(){
+  const preset=TEMPLATE_PRESETS.find(p=>p.id===get('templatePreset'));
+  if(!preset)return;
+  document.getElementById('template').value=preset.creative.portraitHtmlTemplate;
+  document.getElementById('landscape').value=preset.creative.landscapeHtmlTemplate;
+  document.getElementById('inboxTemplate').value=preset.creative.inboxHtmlTemplate;
+  preview();
+}
+
 const template='<style>.poster{height:100%;padding:9%;background:radial-gradient(circle at 80% 20%,#246747,#09241c 65%,#06120e);color:#f3fff6;font-family:system-ui,sans-serif;display:flex;flex-direction:column;justify-content:end;box-sizing:border-box}.eyebrow{color:#8ef9b8;font-size:13px;letter-spacing:.2em;font-weight:900}.heading{font-size:clamp(36px,10vw,62px);line-height:1.04;font-weight:900;letter-spacing:-.05em;margin:15px 0}.deck{color:#d1e3d6;line-height:1.5}</style><section class="poster"><div class="eyebrow">{{eyebrow}}</div><div class="heading">{{headline}}</div><p class="deck">{{deck}}</p></section>';
 document.getElementById('template').value=template;
 document.getElementById('landscape').value=template;
 const get=id=>document.getElementById(id).value;
 const escapeHtml=value=>String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
-function render(t){return t.replace(/{{\s*(title|body|eyebrow|headline|deck|footer)\s*}}/g,(_,field)=>escapeHtml(get(field)));}
+function render(t){return t.replace(/{{\s*(title|body|eyebrow|headline|deck|footer|cta:[a-z0-9-]+)\s*}}/g,(_,field)=>{
+ if(field.startsWith('cta:')){
+   const action=actionSlots.find(a=>a.id===field.slice(4));
+   return action?'<a href="ac-action://'+action.id+'" class="cta" role="button">'+escapeHtml(action.label)+'</a>':'';
+ }
+ return escapeHtml(get(field));
+});}
 function preview(){
- const which=get('format');const fragment=render(get(which==='portrait'?'template':'landscape'));
+ const which=get('format');const fragment=render(get(which==='portrait'?'template':which==='inbox'?'inboxTemplate':'landscape'));
  const frame=document.getElementById('preview');
  frame.style.height=which==='portrait'?'min(66vh,560px)':'240px';
  frame.srcdoc='<!doctype html><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src \'none\'; style-src \'unsafe-inline\'"><style>body{margin:0;overflow:hidden}</style>'+fragment;
 }
 function source(){
  const locale={title:get('title'),body:get('body'),eyebrow:get('eyebrow'),headline:get('headline'),deck:get('deck'),footer:get('footer')};
- return {schemaVersion:2,id:get('id'),revision:1,status:'draft',targets:[get('target')],environments:['collaudo'],placements:['launch_modal','inbox','inline_promo'],
- startsAt:get('start')+':00Z',expiresAt:get('end')+':00Z',priority:Number(get('priority')),frequency:'once_per_revision',
- localizations:{it:locale},creative:{format:'html_css_static',portraitHtmlTemplate:get('template'),landscapeHtmlTemplate:get('landscape')},action:{kind:'none'}};
+ return {schemaVersion:2,id:get('id'),revision:1,status:'draft',audiences:[...selectedAudiences],
+ templateId:get('templatePreset'),notification:{it:{title:get('pushTitle'),body:get('pushBody')}},
+ actions:editorialActions(),environments:[get('environment')],placements:['launch_modal','inbox','inline_promo'],
+ ...(schedulePhases()?{prioritySchedule:schedulePhases()}:{}),
+ startsAt:get('start')+':00Z',expiresAt:get('end')?get('end')+':00Z':null,priority:Number(get('priority')),frequency:'once_per_revision',
+ localizations:{it:locale},creative:{format:'html_css_static',portraitHtmlTemplate:get('template'),landscapeHtmlTemplate:get('landscape'),inboxHtmlTemplate:get('inboxTemplate')},action:{kind:'none'}};
 }
-document.querySelectorAll('input,textarea,select').forEach(el=>el.addEventListener('input',preview));
+document.querySelectorAll('input,textarea,select').forEach(el=>el.addEventListener('input',()=>{preview();redrawRecipients();}));
+document.getElementById('templatePreset').onchange=applyPreset;
+function nextActionId(actions){return ['primary','secondary','third','fourth'].find(id=>!actions.some(a=>a.id===id))??null;}
+document.getElementById('addAction').onclick=()=>{
+  const id=nextActionId(actionSlots);
+  if(!id)return; actionSlots.push({id,label:'Scopri di più',kind:'open_store',value:'wakecuppc'});
+  redrawActionEditors();preview();
+};
 document.getElementById('copyToLandscape').onclick=()=>{document.getElementById('landscape').value=get('template');preview();};
 document.getElementById('download').onclick=()=>{const data=JSON.stringify(source(),null,2);const url=URL.createObjectURL(new Blob([data],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=get('id')+'.json';a.click();URL.revokeObjectURL(url);document.getElementById('status').textContent='Bozza esportata: apri una PR editoriale per pubblicarla.';};
 document.getElementById('copy').onclick=async()=>{try{await navigator.clipboard.writeText(JSON.stringify(source(),null,2));document.getElementById('status').textContent='JSON copiato.';}catch{document.getElementById('status').textContent='La copia richiede HTTPS e permessi del browser.';}};
+actionSlots=[{id:'primary',label:'Apri nel Play Store',kind:'open_store',value:'wakecuppc'}];
+redrawActionEditors();
+applyPreset();
+setupChannels();
 preview();
 </script>
 </html>
