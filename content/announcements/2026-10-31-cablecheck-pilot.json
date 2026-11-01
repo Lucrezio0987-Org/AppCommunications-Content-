@@ -12,7 +12,7 @@
     "inbox",
     "banner"
   ],
-  "status": "published",
+  "status": "archived",
   "startsAt": "2026-10-31T00:00:00Z",
   "expiresAt": "2027-02-01T00:00:00Z",
   "localizations": {
