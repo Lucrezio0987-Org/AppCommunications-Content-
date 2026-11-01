@@ -1,3 +1,5 @@
+> **Avanzamento 01/11/2026 — ANNUNCIO DI LANCIO IN BOZZA.** È stata aperta la [PR Draft #15](https://github.com/Lucrezio0987-Org/AppCommunications-Content-/pull/15) con campagna `2026-11-01-cablecheck-launch` r1, HTML/CSS nativo al design CableCheck, 3 layout, 6 lingue e screenshot di anteprima. [Dossier con fonti e QA](./CABLECHECK-LAUNCH-REVIEW.md). **Non pubblicare:** `storePublished:false` nel catalogo, nessuna disponibilità Play verificata, nessuna CTA Store. Questo piano conserva le decisioni necessarie alla promozione dopo il lancio effettivo.
+
 # CableCheck — piano per la futura comunicazione di rilascio
 
 **Stato:** PLANNED, nessuna campagna creata o pubblicata.  
