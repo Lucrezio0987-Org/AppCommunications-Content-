@@ -1,3 +1,5 @@
+> **AGGIORNAMENTO 2026-11-01 — Direzione superata.** Dopo la revisione del proprietario, la r4 non usa più il montaggio di immagini e schermate in JPEG. La nuova proposta è **HTML/CSS statico basato sul tema WakeCupPC**, descritta in [WAKECUPPC-R4-WEB-REVIEW.md](./WAKECUPPC-R4-WEB-REVIEW.md). Questo documento resta come audit dei materiali e dei vincoli, ma le sezioni sulla produzione di asset bitmap NON sono il piano attivo.
+
 # WakeCupPC — Campagna AppCommunications r4
 
 **Stato:** specifica editoriale verificata sulle fonti di prodotto — `ASSET PRODUCTION NOT STARTED` / `NOT APPROVED FOR PUBLISH`  
