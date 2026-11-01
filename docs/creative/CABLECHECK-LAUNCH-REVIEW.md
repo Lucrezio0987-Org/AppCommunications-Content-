@@ -5,12 +5,15 @@
 > **Collaudo pre-lancio è consentito**, anche se la scheda Play non è pubblica. Non annunciare falsa disponibilità pubblica né aggiungere CTA Store non verificate. Questa PR resta Draft, niente Produzione/FCM.
 
 
-**Stato:** BOZZA GRAFICA v3 DA APPROVARE — COLLAUDO PRE-LANCIO CONSENTITO, NON ANCORA PUBBLICATA  
+**Stato:** CREATIVITÀ v3 APPROVATA PER PROVA IN COLLAUDO — NON ANCORA DISTRIBUITA, NO PRODUZIONE/FCM  
 **Data:** 2026-11-01  
 **Campaign ID:** `2026-11-01-cablecheck-launch`  
 **Owner:** Developer Profile / AppCommunications  
 **Materiale:** `content/campaigns/2026-11-01-cablecheck-launch.json`  
 **Fonte delle regole:** [Playbook multiprodotto](https://github.com/Lucrezio0987-Org/AppCommunications/blob/main/docs/EDITORIAL-CAMPAIGN-PLAYBOOK.md).
+
+
+> **DECISIONE DI COLLAUDO (01/11/2026):** l'utente autorizza a procedere con la v3 in ambiente Collaudo anche prima della disponibilità pubblica della versione sul Play Store. Il file sorgente è stato posto a `status:published` nel branch della PR esclusivamente per consentire l'output del publisher dopo i controlli. Non è un'autorizzazione a notifiche push, Produzione o messaggi «scarica ora».
 
 ## Premessa / stop sul claim di disponibilità
 
@@ -68,7 +71,7 @@ Le immagini sono **screenshot Chromium dello stesso HTML/CSS** incorporato nella
 
 | Campo | Valore |
 | --- | --- |
-| `status` | `draft` |
+| `status` | `published` **nel solo branch di staging** per consentire compilazione/validazione; pubblicazione reale soltanto dopo merge e Action autorizzata |
 | `revision` | `1` |
 | `audiences` | `["product.cablecheck"]` per primo preview client |
 | `environments` | `["collaudo"]` |
@@ -78,7 +81,7 @@ Le immagini sono **screenshot Chromium dello stesso HTML/CSS** incorporato nella
 | `actions` | `[]`, nessuna CTA inattiva o link Play che porta a pagina non disponibile |
 | `action` | `none` |
 
-La PR in bozza **non cambia il feed pubblicato**, né il catalogo approvato WakeCupPC.
+La campagna è stata autorizzata dall'utente per **prova Collaudo**, quindi nel branch di staging `status:published` consente la compilazione. **Finché la PR non viene integrata e il publisher non completa la build, il feed remoto resta invariato**. Non sostituire l'approvazione Collaudo con un'autorizzazione Produzione/FCM.
 
 ### Gate indipendenti: Collaudo / Lancio pubblico
 
@@ -93,10 +96,10 @@ La PR in bozza **non cambia il feed pubblicato**, né il catalogo approvato Wake
 - [x] Copy e notifica IT/EN/ES/FR/DE/PT.
 - [x] QA **Chromium di 30 combinazioni**: 6 lingue × (poster 320×400 e 500×625, inbox 320×180 e 500×281, landscape 640×360). Nessun elemento fondamentale fuori viewport e nessuno scroll orizzontale/verticale. Screenshot IT aggiornati in PR; verificati anche personalmente DE e FR a 320px.
 - [x] Limite di lunghezza template e policy HTML statico verificati localmente.
-- [ ] Approvazione visiva owner (poster, banner, landscape).
+- [x] Approvazione owner della direzione v3 e autorizzazione alla prova in Collaudo (messaggio «procedi pure» del 01/11/2026).
 - [ ] Verifica Play e CTA Store **solo per la futura comunicazione pubblica**, non necessaria al test Collaudo.
-- [ ] Qualificazione publisher/CI della PR Draft.
+- [ ] Qualificazione del publisher con il commit editoriale approvato, verifica del nuovo feed v2 IT/EN/ES/FR/DE/PT e controllo assenza in Produzione.
 - [ ] Smoke Android su CableCheck Collaudo e azione eventuale.
-- [ ] Dopo review owner, collaudo su APK e verifica feed. Produzione/FCM separati.
+- [ ] Dopo merge e Action, smoke nella WebView CableCheck Collaudo per banner, poster, chiusura, localizzazione e aggiornamento della cache. Produzione/FCM separati.
 
 **Questa è una creatività di pre-lancio per Collaudo, senza affermazioni di disponibilità su Play Store.**
