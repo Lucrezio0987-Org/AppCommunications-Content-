@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "id": "2026-10-31-wakecuppc-cross-promo",
-  "revision": 2,
+  "revision": 4,
   "status": "published",
   "audiences": [
     "product.cablecheck"
@@ -120,11 +120,46 @@
   ],
   "creative": {
     "format": "html_css_static",
-    "portraitHtmlTemplate": "<style>*{box-sizing:border-box}.poster{position:relative;width:100%;height:100%;overflow:hidden;padding:8%;color:#f2fff5;background:radial-gradient(circle at 73% 29%,#176344 0,#082c22 44%,#06150f 85%);font-family:system-ui,sans-serif;display:flex;flex-direction:column;justify-content:flex-end}.ring{position:absolute;top:12%;left:18%;width:64%;aspect-ratio:1;border:2px solid #acffda80;border-radius:50%;box-shadow:0 0 75px #62ffad44,inset 0 0 50px #5ffaab26}.ring:after{content:\"\";position:absolute;inset:21%;border:5px solid #baffdc;border-radius:22% 51% 45% 40%;transform:rotate(-24deg);box-shadow:0 0 35px #70fbb355}.tag{font-weight:900;letter-spacing:.19em;color:#a3ffd0;font-size:12px}.headline{font-size:clamp(32px,9vw,60px);font-weight:950;letter-spacing:-.055em;line-height:1.02;margin:12px 0}.deck{color:#d1e4d7;line-height:1.4;font-size:clamp(14px,3.6vw,19px)}.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}.cta{font-size:13px;font-weight:850;text-decoration:none;background:#9af6c1;color:#08261a;border-radius:10px;padding:12px 15px}.cta+.cta{border:1px solid #8df5bc;background:#173f30;color:#c5ffe2}.foot{font-size:11px;letter-spacing:.15em;margin-top:17px;color:#b3d8bf}</style><section class=\"poster\"><div class=\"ring\"></div><div class=\"tag\">{{eyebrow}}</div><h1 class=\"headline\">{{headline}}</h1><p class=\"deck\">{{deck}}</p><div class=\"links\">{{cta:primary}}</div><div class=\"foot\">{{footer}}</div></section>",
-    "landscapeHtmlTemplate": "<style>*{box-sizing:border-box}.poster{width:100%;height:100%;position:relative;overflow:hidden;padding:6%;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(circle at 89% 29%,#1b7950,#0a2d21 47%,#07150f 100%);color:#f3fff8;font-family:system-ui,sans-serif}.halo{position:absolute;right:-3%;width:40%;aspect-ratio:1;border:2px solid #aaffd283;border-radius:50%;box-shadow:0 0 60px #67efab44}.tag{letter-spacing:.16em;color:#adffcb;font-weight:900;font-size:11px}.headline{font-size:clamp(23px,5.5vw,42px);font-weight:950;letter-spacing:-.05em;max-width:72%;line-height:1.06;margin:10px 0}.deck{color:#dbf1e2;max-width:72%;font-size:clamp(11px,2.3vw,15px)}.cta{display:inline-block;font-size:12px;font-weight:850;text-decoration:none;color:#073021;background:#9dffd0;border-radius:9px;padding:9px 14px;margin:12px 9px 0 0;max-width:max-content}</style><section class=\"poster\"><div class=\"halo\"></div><div class=\"tag\">{{eyebrow}}</div><h2 class=\"headline\">{{headline}}</h2><p class=\"deck\">{{deck}}</p><div>{{cta:primary}}</div></section>",
-    "inboxHtmlTemplate": "<style>*{box-sizing:border-box}.banner{position:relative;width:100%;height:100%;overflow:hidden;padding:7%;color:#f3fff7;background:radial-gradient(circle at 83% 28%,#1b7051,#092920 49%,#071710 100%);font-family:system-ui,sans-serif;display:flex;flex-direction:column;justify-content:center}.ring{position:absolute;top:-12%;right:-7%;width:48%;aspect-ratio:1;border:2px solid #a4ffd078;border-radius:50%;box-shadow:0 0 55px #62edab44}.eyebrow{color:#acffcd;font-size:11px;font-weight:900;letter-spacing:.16em}.headline{font-size:clamp(23px,5.9vw,42px);line-height:1.06;letter-spacing:-.045em;font-weight:950;max-width:77%;margin:12px 0}.deck{color:#d2e7db;font-size:clamp(11px,2.5vw,16px);max-width:76%}</style><section class=\"banner\"><div class=\"ring\"></div><div class=\"eyebrow\">{{eyebrow}}</div><h2 class=\"headline\">{{headline}}</h2><p class=\"deck\">{{deck}}</p></section>"
+    "portraitHtmlTemplate": "<style>*{box-sizing:border-box}.ad{width:100%;height:100%;overflow:hidden;position:relative;padding:9%;display:flex;flex-direction:column;justify-content:flex-end;color:#F7F9FC;background:radial-gradient(circle at 82% 17%,#123469 0%,#0B1016 64%);font-family:system-ui,sans-serif}.ad:before{content:'';position:absolute;top:10%;right:12%;width:33%;aspect-ratio:1;border-radius:50%;border:8px solid #4C84FF;opacity:.22;box-shadow:0 0 100px #4C84FF55}.tag{color:#8CA9DC;font-weight:800;letter-spacing:.15em;font-size:clamp(11px,2.5vw,15px)}h1,h2{position:relative;font-weight:900;line-height:1.09;letter-spacing:-.04em;margin:10px 0 14px}h1{font-size:clamp(30px,9vw,55px)}h2{font-size:clamp(23px,5.4vw,39px)}p{position:relative;font-size:clamp(13px,3.6vw,18px);line-height:1.34;color:#D7E0E9;margin:0 0 14px}.ctas{position:relative;margin-top:10px}.ctas a{display:inline-block;padding:12px 17px;background:#4C84FF;color:#fff;text-decoration:none;border-radius:12px;font-weight:850}.word{position:absolute;top:8%;left:9%;color:#F7F9FC;font-size:clamp(17px,4.4vw,28px);font-weight:900;letter-spacing:-.04em}.word b{color:#15DBF7}.dot{position:absolute;top:25%;right:18%;width:18px;height:18px;border-radius:50%;background:#4ADE9B;box-shadow:0 0 30px #4ADE9B88}</style><section class=\"ad\"><div class=\"word\">WakeCup<b>PC</b></div><div class=\"dot\"></div><div class=\"tag\">{{eyebrow}}</div><h1>{{headline}}</h1><p>{{deck}}</p><div class=\"ctas\">{{cta:primary}}</div></section>",
+    "landscapeHtmlTemplate": "<style>*{box-sizing:border-box}.ad{width:100%;height:100%;overflow:hidden;position:relative;padding:9%;display:flex;flex-direction:column;justify-content:flex-end;color:#F7F9FC;background:radial-gradient(circle at 82% 17%,#123469 0%,#0B1016 64%);font-family:system-ui,sans-serif}.ad:before{content:'';position:absolute;top:10%;right:12%;width:33%;aspect-ratio:1;border-radius:50%;border:8px solid #4C84FF;opacity:.22;box-shadow:0 0 100px #4C84FF55}.tag{color:#8CA9DC;font-weight:800;letter-spacing:.15em;font-size:clamp(11px,2.5vw,15px)}h1,h2{position:relative;font-weight:900;line-height:1.09;letter-spacing:-.04em;margin:10px 0 14px}h1{font-size:clamp(30px,9vw,55px)}h2{font-size:clamp(23px,5.4vw,39px)}p{position:relative;font-size:clamp(13px,3.6vw,18px);line-height:1.34;color:#D7E0E9;margin:0 0 14px}.ctas{position:relative;margin-top:10px}.ctas a{display:inline-block;padding:12px 17px;background:#4C84FF;color:#fff;text-decoration:none;border-radius:12px;font-weight:850}.word{position:absolute;top:8%;left:9%;color:#F7F9FC;font-size:clamp(17px,4.4vw,28px);font-weight:900;letter-spacing:-.04em}.word b{color:#15DBF7}.dot{position:absolute;top:25%;right:18%;width:18px;height:18px;border-radius:50%;background:#4ADE9B;box-shadow:0 0 30px #4ADE9B88}</style><section class=\"ad\"><div class=\"word\">WakeCup<b>PC</b></div><div class=\"dot\"></div><h2>{{headline}}</h2><p>{{deck}}</p><div class=\"ctas\">{{cta:primary}}</div></section>",
+    "inboxHtmlTemplate": "<style>*{box-sizing:border-box}.ad{width:100%;height:100%;overflow:hidden;position:relative;padding:9%;display:flex;flex-direction:column;justify-content:flex-end;color:#F7F9FC;background:radial-gradient(circle at 82% 17%,#123469 0%,#0B1016 64%);font-family:system-ui,sans-serif}.ad:before{content:'';position:absolute;top:10%;right:12%;width:33%;aspect-ratio:1;border-radius:50%;border:8px solid #4C84FF;opacity:.22;box-shadow:0 0 100px #4C84FF55}.tag{color:#8CA9DC;font-weight:800;letter-spacing:.15em;font-size:clamp(11px,2.5vw,15px)}h1,h2{position:relative;font-weight:900;line-height:1.09;letter-spacing:-.04em;margin:10px 0 14px}h1{font-size:clamp(30px,9vw,55px)}h2{font-size:clamp(23px,5.4vw,39px)}p{position:relative;font-size:clamp(13px,3.6vw,18px);line-height:1.34;color:#D7E0E9;margin:0 0 14px}.ctas{position:relative;margin-top:10px}.ctas a{display:inline-block;padding:12px 17px;background:#4C84FF;color:#fff;text-decoration:none;border-radius:12px;font-weight:850}.word{position:absolute;top:8%;left:9%;color:#F7F9FC;font-size:clamp(17px,4.4vw,28px);font-weight:900;letter-spacing:-.04em}.word b{color:#15DBF7}.dot{position:absolute;top:25%;right:18%;width:18px;height:18px;border-radius:50%;background:#4ADE9B;box-shadow:0 0 30px #4ADE9B88}</style><section class=\"ad\"><div class=\"word\">WakeCup<b>PC</b></div><div class=\"dot\"></div><h2>{{headline}}</h2><p>{{deck}}</p></section>"
   },
   "action": {
     "kind": "none"
+  },
+  "creativeMedia": {
+    "schemaVersion": 1,
+    "kind": "image_ad",
+    "assets": {
+      "portrait": {
+        "source": "media/wakecuppc-r4-portrait.jpg",
+        "fit": "contain",
+        "alt": {
+          "it": "WakeCupPC: icona ufficiale, grafica Keep Awake e schermata reale del Timer",
+          "en": "WakeCupPC: official icon, Keep Awake artwork and actual Timer screen",
+          "es": "WakeCupPC: icono oficial, gráfico Keep Awake y pantalla real del temporizador",
+          "fr": "WakeCupPC : icône officielle, illustration Keep Awake et écran réel du minuteur",
+          "de": "WakeCupPC: offizielles App-Symbol, Keep-Awake-Grafik und echte Timer-Ansicht",
+          "pt": "WakeCupPC: ícone oficial, ilustração Keep Awake e ecrã real do temporizador"
+        }
+      },
+      "inbox": {
+        "source": "media/wakecuppc-r4-inbox.jpg",
+        "fit": "contain",
+        "alt": {
+          "it": "WakeCupPC: icona ufficiale e attività del PC nel tutorial Keep Awake",
+          "en": "WakeCupPC: official icon and PC activity shown by the Keep Awake tutorial",
+          "es": "WakeCupPC: icono oficial y actividad del PC en el tutorial Keep Awake",
+          "fr": "WakeCupPC : icône officielle et activité du PC illustrée par le tutoriel Keep Awake",
+          "de": "WakeCupPC: offizielles Symbol und PC-Aktivität aus dem Keep-Awake-Tutorial",
+          "pt": "WakeCupPC: ícone oficial e atividade do PC no tutorial Keep Awake"
+        }
+      }
+    },
+    "style": {
+      "backgroundColor": "#0B1016",
+      "foregroundColor": "#F7F9FC",
+      "accentColor": "#4C84FF"
+    }
   }
 }
