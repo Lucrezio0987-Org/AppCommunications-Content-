@@ -1,6 +1,11 @@
-# CableCheck — Annuncio lancio | r1 brand-first HTML/CSS
+# CableCheck — Annuncio lancio | revisione creativa v2 HTML/CSS
 
-**Stato:** BOZZA DA APPROVARE — NON PUBBLICATA, NON ABILITATA ALLO STORE  
+> **REVISIONE CREATIVA v2 — 1 novembre 2026.** La proposta con grande indicatore «W», barre decorative e glow uniforme è stata scartata dall'owner: troppo generica e poco fedele a CableCheck. La nuova variante prende come riferimenti BatteryLevelGauge, ChargeArcGauge, MonitorHeroAccent, CareScoreRing e docs/design-system.md. Gli screenshot allegati sono render Chromium degli stessi template HTML/CSS v2.
+>
+> **Collaudo pre-lancio è consentito**, anche se la scheda Play non è pubblica. Non annunciare falsa disponibilità pubblica né aggiungere CTA Store non verificate. Questa PR resta Draft, niente Produzione/FCM.
+
+
+**Stato:** BOZZA GRAFICA v2 DA APPROVARE — COLLAUDO PRE-LANCIO CONSENTITO, NON ANCORA PUBBLICATA  
 **Data:** 2026-11-01  
 **Campaign ID:** `2026-11-01-cablecheck-launch`  
 **Owner:** Developer Profile / AppCommunications  
@@ -26,17 +31,17 @@
 | Confronti | [`ChargingComparisonPanel.tsx`](https://github.com/Lucrezio0987-Org/CableCheck/blob/main/src/view/components/charging/ChargingComparisonPanel.tsx) | Confronti disponibili ma condizionati ai dati e alla comparabilità |
 | Identità app | [`assets/icon.png`](https://github.com/Lucrezio0987-Org/CableCheck/blob/main/assets/icon.png) | Il **marchio in CSS è una stilizzazione editoriale**, non pixel-identico all'icona installata; non dichiararlo screenshot originale |
 
-## Creative direction
+## Creative direction v2: UI effettiva di CableCheck
 
-**Hero:** *«La ricarica, più chiara.»*  
-**Punti chiave:** Monitor, Test, Cura.  
-**Messaggio:** monitoraggio della potenza e della temperatura, confronti accessori e indicatori sulla batteria, limitati dai dati esposti dal dispositivo Android. Evitare diagnosi certe del cavo o garanzie assolute di stato batteria.
+**Headline:** «Capisci meglio ogni ricarica.» (in sei lingue). **Supporting line:** «Monitora. Confronta. Prenditi cura della batteria.».
 
-- HTML/CSS statico, WebView isolata: **nessun JavaScript, immagine, fetch, SVG inline, link arbitrario o risorsa remota**.
-- Il diagramma mostra un ring generico con unità **W** e una traccia **illustrativa**, senza percentuali, wattaggi, temperature o score fittizi.
-- Le informazioni sono in `{{eyebrow}}`, `{{headline}}`, `{{deck}}`, `{{footer}}`; le sei traduzioni provengono dal JSON.
-- L'icona CSS raffigura concettualmente una batteria, non replica la vera icona app: limitazione documentata.
-- L'host gestisce il frame, la X, la navigazione e l'attribuzione `source`.
+- **Poster 4:5:** wordmark, eyebrow, headline e deck, una superficie dati con **arco 260°** ispirato a ChargeArcGauge e un andamento sottile ispirato a MonitorHeroAccent. In basso tre micro-indicatori richiamano Monitor/Test/Cura senza moltiplicare le card; footer localizzato.
+- **Banner inbox 16:9:** composizione autonoma, testo a sinistra, gauge minimale a destra, nessun pulsante interno: l'intera card è tappabile nel client.
+- **Landscape/inline:** testo e footer a sinistra, gauge e traccia dati in una sola superficie a destra.
+- **Colori reali:** background #050706, surfaceRaised #111713, verde energia #4FE36B, azzurro informativo #69D2FF. Il design system richiede **meno box**, glow minimo, griglia discreta e colori semantici.
+- **Niente valori fittizi:** archi e grafici sono stilizzazioni editoriali senza percentuali, watt, score o diagnosi inventati; W/°C/mA sono unità di misura, non dati di un dispositivo.
+- **Fedeltà dichiarata:** il logomark batteria CSS è stilizzato, non la bitmap del launcher; i componenti raffigurati non sono screenshot reali.
+- **Contratto:** tre template HTML/CSS statici con placeholder tradotti, nessuna risorsa remota, JS, SVG, img o CTA arbitraria. Le immagini PNG nel dossier sono **screenshot di revisione**, non immagini distribuite nel feed.
 
 ## Anteprime del sorgente della campagna
 
@@ -64,15 +69,11 @@ Le immagini sono **screenshot Chromium dello stesso HTML/CSS** incorporato nella
 
 La PR in bozza **non cambia il feed pubblicato**, né il catalogo approvato WakeCupPC.
 
-### Passaggio al lancio effettivo
+### Gate indipendenti: Collaudo / Lancio pubblico
 
-1. **Confermare lo stato reale su Play Console/Store**: `com.lucrezio0987.cablecheck` disponibile, data, track e versione. Per promozioni pubbliche il catalogo `storePublished` deve essere vero solo **dopo conferma**.
-2. Preparare la CTA dichiarativa `primary` con intent `open_store(cablecheck)` e label tradotte; inserire il placeholder `{{cta:primary}}` soltanto nel poster e nel landscape, in una zona di layout verificata, e aggiungere `action: open_store(cablecheck)`. Nel banner inbox non inserire CTA.
-3. Definire **recipients**: al primo test `product.cablecheck` (lettore installato); promozione incrociata verso WakeCupPC solo **quando WakeCupPC supporterà il client AppCommunications** e con target/consenso appropriati.
-4. Scegliere il canale e la frequenza della campagna: non imporre autoapertura o push senza decisione.
-5. Rivedere anteprime IT/EN/ES/FR/DE/PT, 320px e Android; verificare CTA/store deep link/attribuzione, senza nuovi claim di release.
-6. Fare merge della PR solo dopo approvazione; pubblicare **soltanto Collaudo** mediante trigger [AppCommunications scoped publisher](https://github.com/Lucrezio0987-Org/AppCommunications/blob/main/docs/AC-05-PUBLISHING.md) con SHA e revisione espliciti. Confermare nel ramo `published` ID, hash e isolamento Produzione.
-7. Richiedere **autorizzazione separata** per eventuale ambiente Produzione e invio FCM.
+**Collaudo pre-lancio:** dopo review grafica e test del contratto è possibile integrare la campagna senza alcuna disponibilità sul Play Store, mantenendo status draft fino all'approvazione. Pubblicare soltanto in Collaudo mediante workflow con SHA approvato. Verificare il vero APK e il rendering in Novità. Niente FCM.
+
+**Produzione e CTA pubblica:** quando l'app sarà effettivamente disponibile e confermata, verificare la pagina Store, aggiungere azione dichiarativa open_store(cablecheck) nel solo poster/landscape, aggiornare copy e QA e chiedere autorizzazione separata per Produzione o FCM. Non inferire autorizzazioni da una PR approvata per Collaudo.
 
 ## QA già eseguito / residuo
 
@@ -82,9 +83,9 @@ La PR in bozza **non cambia il feed pubblicato**, né il catalogo approvato Wake
 - [x] Preview Chromium per **18 combinazioni** (3 layout × 6 lingue): nessun elemento fuori dai viewport 320×400, 320×180, 640×360.
 - [x] Limite di lunghezza template e policy HTML statico verificati localmente.
 - [ ] Approvazione visiva owner (poster, banner, landscape).
-- [ ] Conferma pubblicazione reale Play e aggiunta CTA Store.
+- [ ] Verifica Play e CTA Store **solo per la futura comunicazione pubblica**, non necessaria al test Collaudo.
 - [ ] Qualificazione publisher/CI della PR Draft.
 - [ ] Smoke Android su CableCheck Collaudo e azione eventuale.
-- [ ] Solo in seguito, autorizzazione alla distribuzione Collaudo; Produzione/FCM separati.
+- [ ] Dopo review owner, collaudo su APK e verifica feed. Produzione/FCM separati.
 
-**Questa è una creatività di pre-lancio, non un'affermazione pubblica che CableCheck sia già sul Play Store.**
+**Questa è una creatività di pre-lancio per Collaudo, senza affermazioni di disponibilità su Play Store.**
