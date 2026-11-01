@@ -1,10 +1,10 @@
 {
   "schemaVersion": 2,
   "id": "2026-10-31-wakecuppc-cross-promo",
-  "revision": 1,
+  "revision": 2,
   "status": "published",
   "audiences": [
-    "family.mobile"
+    "product.cablecheck"
   ],
   "environments": [
     "collaudo"
@@ -28,59 +28,100 @@
   "localizations": {
     "it": {
       "title": "Scopri WakeCupPC",
-      "body": "La nostra app per mantenere attivo il PC via Bluetooth: scopri l'app e le altre novità.",
-      "eyebrow": "ECOSISTEMA MOBILE",
-      "headline": "Il tuo PC resta sveglio.",
-      "deck": "WakeCupPC collega il tuo smartphone al computer e lo mantiene attivo via Bluetooth.",
-      "footer": "LUCREZIO0987 · APPLICAZIONI"
+      "body": "WakeCupPC usa il telefono come dispositivo Bluetooth HID e invia piccoli movimenti del mouse per mantenere attivo il PC. Non serve installare software sul computer; è richiesto il supporto HID.",
+      "eyebrow": "DA LUCREZIO0987",
+      "headline": "Il PC resta attivo.",
+      "deck": "Il telefono diventa un mouse Bluetooth HID: piccoli movimenti, timer e programmi settimanali. Nessun software da installare sul PC.",
+      "footer": "WAKECUPPC · ANDROID"
     },
     "en": {
       "title": "Discover WakeCupPC",
-      "body": "Our Bluetooth PC-activity app: discover the app and our other updates.",
-      "eyebrow": "MOBILE ECOSYSTEM",
+      "body": "WakeCupPC uses your phone as a Bluetooth HID device to send small mouse movements and keep your PC active. No PC-side software is needed; compatible HID devices are required.",
+      "eyebrow": "FROM LUCREZIO0987",
       "headline": "Keep your PC awake.",
-      "deck": "WakeCupPC connects your phone and computer to keep it active over Bluetooth.",
-      "footer": "LUCREZIO0987 · APPS"
+      "deck": "Turn your phone into a Bluetooth HID mouse, with timers and weekly schedules. No software to install on your computer.",
+      "footer": "WAKECUPPC · ANDROID"
+    },
+    "es": {
+      "title": "Descubre WakeCupPC",
+      "body": "WakeCupPC usa el móvil como dispositivo Bluetooth HID para enviar pequeños movimientos del ratón y mantener activo el PC. No requiere software en el ordenador, pero sí dispositivos compatibles.",
+      "eyebrow": "DE LUCREZIO0987",
+      "headline": "Mantén activo tu PC.",
+      "deck": "Convierte tu móvil en un ratón Bluetooth HID, con temporizador y horarios semanales. Sin instalar software en el PC.",
+      "footer": "WAKECUPPC · ANDROID"
+    },
+    "fr": {
+      "title": "Découvrez WakeCupPC",
+      "body": "WakeCupPC transforme le téléphone en périphérique Bluetooth HID pour envoyer de petits mouvements de souris et garder le PC actif. Aucun logiciel côté PC ; appareils compatibles requis.",
+      "eyebrow": "PAR LUCREZIO0987",
+      "headline": "Gardez votre PC actif.",
+      "deck": "Votre téléphone devient une souris Bluetooth HID avec minuterie et horaires hebdomadaires. Aucun logiciel à installer sur le PC.",
+      "footer": "WAKECUPPC · ANDROID"
+    },
+    "de": {
+      "title": "Entdecke WakeCupPC",
+      "body": "WakeCupPC nutzt dein Smartphone als Bluetooth-HID-Gerät: Kleine Mausbewegungen halten den PC aktiv. Keine Software auf dem PC nötig; kompatible HID-Geräte erforderlich.",
+      "eyebrow": "VON LUCREZIO0987",
+      "headline": "Dein PC bleibt aktiv.",
+      "deck": "Nutze dein Smartphone als Bluetooth-HID-Maus, mit Timer und Wochenplänen. Ohne zusätzliche PC-Software.",
+      "footer": "WAKECUPPC · ANDROID"
+    },
+    "pt": {
+      "title": "Descobre o WakeCupPC",
+      "body": "O WakeCupPC usa o telemóvel como dispositivo Bluetooth HID para enviar pequenos movimentos do rato e manter o PC ativo. Não requer software no PC; exige dispositivos compatíveis.",
+      "eyebrow": "DA LUCREZIO0987",
+      "headline": "Mantém o PC ativo.",
+      "deck": "Usa o telemóvel como rato Bluetooth HID, com temporizador e horários semanais. Sem instalar software no PC.",
+      "footer": "WAKECUPPC · ANDROID"
     }
   },
   "notification": {
     "it": {
-      "title": "Scopri WakeCupPC",
-      "body": "Un'altra applicazione del nostro ecosistema: scopri come funziona WakeCupPC."
+      "title": "Scopri WakeCupPC 💚",
+      "body": "Il tuo smartphone può mantenere attivo il PC via Bluetooth HID. Scopri WakeCupPC su Google Play."
     },
     "en": {
-      "title": "Meet WakeCupPC",
-      "body": "Discover another app in our ecosystem: WakeCupPC for your computer."
+      "title": "Discover WakeCupPC 💚",
+      "body": "Keep your PC active using your phone over Bluetooth HID. Meet WakeCupPC on Google Play."
+    },
+    "es": {
+      "title": "Descubre WakeCupPC 💚",
+      "body": "Mantén activo tu PC con el móvil por Bluetooth HID. Descubre WakeCupPC en Google Play."
+    },
+    "fr": {
+      "title": "Découvrez WakeCupPC 💚",
+      "body": "Gardez votre PC actif grâce au Bluetooth HID de votre téléphone. Découvrez WakeCupPC sur Google Play."
+    },
+    "de": {
+      "title": "Entdecke WakeCupPC 💚",
+      "body": "Halte deinen PC per Bluetooth HID mit dem Smartphone aktiv. Entdecke WakeCupPC bei Google Play."
+    },
+    "pt": {
+      "title": "Descobre o WakeCupPC 💚",
+      "body": "Mantém o PC ativo via Bluetooth HID com o telemóvel. Descobre o WakeCupPC no Google Play."
     }
   },
   "actions": [
     {
       "id": "primary",
       "labels": {
-        "it": "Apri nel Play Store",
-        "en": "Open on Google Play"
+        "it": "Apri su Google Play",
+        "en": "Open on Google Play",
+        "es": "Ver en Google Play",
+        "fr": "Voir sur Google Play",
+        "de": "Bei Google Play ansehen",
+        "pt": "Ver no Google Play"
       },
       "intent": {
         "kind": "open_store",
         "appId": "wakecuppc"
       }
-    },
-    {
-      "id": "secondary",
-      "labels": {
-        "it": "Leggi le novità",
-        "en": "Read the news"
-      },
-      "intent": {
-        "kind": "open_inbox",
-        "announcementId": "2026-10-31-cablecheck-pilot"
-      }
     }
   ],
   "creative": {
     "format": "html_css_static",
-    "portraitHtmlTemplate": "<style>*{box-sizing:border-box}.poster{position:relative;width:100%;height:100%;overflow:hidden;padding:8%;color:#f2fff5;background:radial-gradient(circle at 73% 29%,#176344 0,#082c22 44%,#06150f 85%);font-family:system-ui,sans-serif;display:flex;flex-direction:column;justify-content:flex-end}.ring{position:absolute;top:12%;left:18%;width:64%;aspect-ratio:1;border:2px solid #acffda80;border-radius:50%;box-shadow:0 0 75px #62ffad44,inset 0 0 50px #5ffaab26}.ring:after{content:\"\";position:absolute;inset:21%;border:5px solid #baffdc;border-radius:22% 51% 45% 40%;transform:rotate(-24deg);box-shadow:0 0 35px #70fbb355}.tag{font-weight:900;letter-spacing:.19em;color:#a3ffd0;font-size:12px}.headline{font-size:clamp(32px,9vw,60px);font-weight:950;letter-spacing:-.055em;line-height:1.02;margin:12px 0}.deck{color:#d1e4d7;line-height:1.4;font-size:clamp(14px,3.6vw,19px)}.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}.cta{font-size:13px;font-weight:850;text-decoration:none;background:#9af6c1;color:#08261a;border-radius:10px;padding:12px 15px}.cta+.cta{border:1px solid #8df5bc;background:#173f30;color:#c5ffe2}.foot{font-size:11px;letter-spacing:.15em;margin-top:17px;color:#b3d8bf}</style><section class=\"poster\"><div class=\"ring\"></div><div class=\"tag\">{{eyebrow}}</div><h1 class=\"headline\">{{headline}}</h1><p class=\"deck\">{{deck}}</p><div class=\"links\">{{cta:primary}}{{cta:secondary}}</div><div class=\"foot\">{{footer}}</div></section>",
-    "landscapeHtmlTemplate": "<style>*{box-sizing:border-box}.poster{width:100%;height:100%;position:relative;overflow:hidden;padding:6%;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(circle at 89% 29%,#1b7950,#0a2d21 47%,#07150f 100%);color:#f3fff8;font-family:system-ui,sans-serif}.halo{position:absolute;right:-3%;width:40%;aspect-ratio:1;border:2px solid #aaffd283;border-radius:50%;box-shadow:0 0 60px #67efab44}.tag{letter-spacing:.16em;color:#adffcb;font-weight:900;font-size:11px}.headline{font-size:clamp(23px,5.5vw,42px);font-weight:950;letter-spacing:-.05em;max-width:72%;line-height:1.06;margin:10px 0}.deck{color:#dbf1e2;max-width:72%;font-size:clamp(11px,2.3vw,15px)}.cta{display:inline-block;font-size:12px;font-weight:850;text-decoration:none;color:#073021;background:#9dffd0;border-radius:9px;padding:9px 14px;margin:12px 9px 0 0;max-width:max-content}</style><section class=\"poster\"><div class=\"halo\"></div><div class=\"tag\">{{eyebrow}}</div><h2 class=\"headline\">{{headline}}</h2><p class=\"deck\">{{deck}}</p><div>{{cta:primary}}{{cta:secondary}}</div></section>",
+    "portraitHtmlTemplate": "<style>*{box-sizing:border-box}.poster{position:relative;width:100%;height:100%;overflow:hidden;padding:8%;color:#f2fff5;background:radial-gradient(circle at 73% 29%,#176344 0,#082c22 44%,#06150f 85%);font-family:system-ui,sans-serif;display:flex;flex-direction:column;justify-content:flex-end}.ring{position:absolute;top:12%;left:18%;width:64%;aspect-ratio:1;border:2px solid #acffda80;border-radius:50%;box-shadow:0 0 75px #62ffad44,inset 0 0 50px #5ffaab26}.ring:after{content:\"\";position:absolute;inset:21%;border:5px solid #baffdc;border-radius:22% 51% 45% 40%;transform:rotate(-24deg);box-shadow:0 0 35px #70fbb355}.tag{font-weight:900;letter-spacing:.19em;color:#a3ffd0;font-size:12px}.headline{font-size:clamp(32px,9vw,60px);font-weight:950;letter-spacing:-.055em;line-height:1.02;margin:12px 0}.deck{color:#d1e4d7;line-height:1.4;font-size:clamp(14px,3.6vw,19px)}.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}.cta{font-size:13px;font-weight:850;text-decoration:none;background:#9af6c1;color:#08261a;border-radius:10px;padding:12px 15px}.cta+.cta{border:1px solid #8df5bc;background:#173f30;color:#c5ffe2}.foot{font-size:11px;letter-spacing:.15em;margin-top:17px;color:#b3d8bf}</style><section class=\"poster\"><div class=\"ring\"></div><div class=\"tag\">{{eyebrow}}</div><h1 class=\"headline\">{{headline}}</h1><p class=\"deck\">{{deck}}</p><div class=\"links\">{{cta:primary}}</div><div class=\"foot\">{{footer}}</div></section>",
+    "landscapeHtmlTemplate": "<style>*{box-sizing:border-box}.poster{width:100%;height:100%;position:relative;overflow:hidden;padding:6%;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(circle at 89% 29%,#1b7950,#0a2d21 47%,#07150f 100%);color:#f3fff8;font-family:system-ui,sans-serif}.halo{position:absolute;right:-3%;width:40%;aspect-ratio:1;border:2px solid #aaffd283;border-radius:50%;box-shadow:0 0 60px #67efab44}.tag{letter-spacing:.16em;color:#adffcb;font-weight:900;font-size:11px}.headline{font-size:clamp(23px,5.5vw,42px);font-weight:950;letter-spacing:-.05em;max-width:72%;line-height:1.06;margin:10px 0}.deck{color:#dbf1e2;max-width:72%;font-size:clamp(11px,2.3vw,15px)}.cta{display:inline-block;font-size:12px;font-weight:850;text-decoration:none;color:#073021;background:#9dffd0;border-radius:9px;padding:9px 14px;margin:12px 9px 0 0;max-width:max-content}</style><section class=\"poster\"><div class=\"halo\"></div><div class=\"tag\">{{eyebrow}}</div><h2 class=\"headline\">{{headline}}</h2><p class=\"deck\">{{deck}}</p><div>{{cta:primary}}</div></section>",
     "inboxHtmlTemplate": "<style>*{box-sizing:border-box}.banner{position:relative;width:100%;height:100%;overflow:hidden;padding:7%;color:#f3fff7;background:radial-gradient(circle at 83% 28%,#1b7051,#092920 49%,#071710 100%);font-family:system-ui,sans-serif;display:flex;flex-direction:column;justify-content:center}.ring{position:absolute;top:-12%;right:-7%;width:48%;aspect-ratio:1;border:2px solid #a4ffd078;border-radius:50%;box-shadow:0 0 55px #62edab44}.eyebrow{color:#acffcd;font-size:11px;font-weight:900;letter-spacing:.16em}.headline{font-size:clamp(23px,5.9vw,42px);line-height:1.06;letter-spacing:-.045em;font-weight:950;max-width:77%;margin:12px 0}.deck{color:#d2e7db;font-size:clamp(11px,2.5vw,16px);max-width:76%}</style><section class=\"banner\"><div class=\"ring\"></div><div class=\"eyebrow\">{{eyebrow}}</div><h2 class=\"headline\">{{headline}}</h2><p class=\"deck\">{{deck}}</p></section>"
   },
   "action": {
