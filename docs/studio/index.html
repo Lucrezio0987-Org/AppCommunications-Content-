@@ -25,6 +25,7 @@ iframe{width:100%;height:min(66vh,560px);border:0;background:#071914;border-radi
 .recipient-list{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.recipient-chip{border:1px solid #365c47;border-radius:30px;padding:8px 11px;color:#d9f7e4;font-size:12px}
 .recipient-chip.planned{color:#b1b8b2;border-color:#314038}.recipient-chip.connected{border-color:#68d5a2}
 #audienceStatus{font-size:12px;color:#b3d5bd;line-height:1.5}
+[hidden]{display:none!important}.media-card{width:100%;max-width:100%;height:min(66vh,560px);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;border:1px solid #345065;background:#061632}.media-card.wide{height:240px}.media-art{flex:1;min-height:0;position:relative}.media-art img{display:block;width:100%;height:100%;object-fit:contain}.media-copy{padding:13px 17px;color:white;background:#061632}.media-copy b{display:block;font-size:18px}.media-copy small{display:block;margin-top:5px;line-height:1.35}.media-cta{display:inline-block;margin-top:8px;padding:8px 13px;border-radius:8px;background:#00D8FF;color:#061632;font-weight:800;font-size:12px}.media-summary{white-space:pre-wrap;font:12px/1.45 ui-monospace,monospace;color:#a9dbce}.media-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.media-grid label{margin:0}.media-panel{border:1px solid #345065;border-radius:12px;padding:14px;background:#0c1522}.media-panel input[type=file]{font-size:12px;padding:10px}.media-colors{display:flex;gap:12px;flex-wrap:wrap}.media-colors label{flex:1;min-width:100px}.media-colors input{height:39px;padding:3px;cursor:pointer}.media-check{display:flex;gap:9px;align-items:flex-start}.media-check input{width:auto;margin:2px 0 0;flex:none}.media-error{color:#ffb4aa!important}
 @media(max-width:900px){main{display:block}.viewport{position:static;margin:25px 0}}
 </style>
 <header><b>AppCommunications <span style="color:#8af6bb">Studio</span></b><span class="version">VISUAL CAMPAIGNS · V2</span></header>
@@ -72,6 +73,33 @@ iframe{width:100%;height:min(66vh,560px);border:0;background:#071914;border-radi
 <label>Banner dedicato per lo storico (16:9)<textarea id="inboxTemplate"></textarea></label>
 <p class="hint">In tutte le app lo storico mostra questo rettangolo; toccarlo apre la locandina integrale.</p>
 </fieldset>
+<fieldset><legend>TIPO DI CREATIVITÀ · IMMAGINI E WEB</legend>
+<label>Renderer della campagna<select id="creativeType">
+<option value="html_css_static">Componente web HTML/CSS statico (legacy)</option>
+<option value="image_ad">Pubblicità grafica · Image Ad v2</option>
+</select></label>
+<p class="hint">L'identità grafica appartiene sempre al prodotto promosso, non all'app che distribuisce la campagna. Image Ad include asset verificati e mantiene i template HTML come fallback.</p>
+<div id="mediaPanel" class="media-panel" hidden>
+<div class="media-grid">
+<label>Poster 4:5 · file originale JPEG/PNG/WebP<input id="portraitImage" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"></label>
+<label>Banner storico 16:9 · file originale JPEG/PNG/WebP<input id="inboxImage" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"></label>
+</div>
+<p class="hint">Massimo 1,5 MB per file, 4.096 px per lato e 8 MP. Il browser controlla i byte, l'hash SHA-256 e le dimensioni. Il publisher li verifica nuovamente.</p>
+<div id="portraitMediaStatus" class="media-summary" role="status"></div><div id="inboxMediaStatus" class="media-summary" role="status"></div>
+<label>Testo alternativo del poster (IT)<input id="portraitAlt" maxlength="180" value="WakeCupPC: smartphone e computer collegati"></label>
+<label>Testo alternativo del banner (IT)<input id="inboxAlt" maxlength="180" value="WakeCupPC: applicazione Android Bluetooth HID"></label>
+<div class="media-colors">
+<label>Colore sfondo<input type="color" id="mediaBackground" value="#061632"></label>
+<label>Testo<input type="color" id="mediaForeground" value="#ffffff"></label>
+<label>Accento CTA<input type="color" id="mediaAccent" value="#00d8ff"></label>
+</div>
+<label class="media-check"><input type="checkbox" id="mediaApproved">Ho verificato che il testo stampato nelle immagini sia completo, corretto, coerente con la lingua e non tagliato dal layout. L'asset verticale WakeCupPC con la battuta incompleta NON è approvato.</label>
+<p id="mediaValidation" class="hint" role="status"></p>
+<button type="button" class="secondary" id="downloadPortraitImage" disabled>Scarica poster validato</button>
+<button type="button" class="secondary" id="downloadInboxImage" disabled>Scarica banner validato</button>
+<p class="hint">Il browser non pubblica file su GitHub. Scarica i due asset e la bozza JSON, quindi caricali in <code>content/media/</code> e <code>content/campaigns/</code> mediante PR editoriale. Niente generazione di nuove immagini.</p>
+</div>
+</fieldset>
 <fieldset><legend>NOTIFICA NATIVA · TESTO ITALIANO</legend>
 <p class="hint">Il testo è distinto dal banner. Viene utilizzato soltanto quando l'utente ha autorizzato le notifiche e il servizio push è configurato.</p>
 <label>Titolo (max 80)<input id="pushTitle" maxlength="80" value="Una nuova applicazione disponibile"></label>
@@ -97,13 +125,17 @@ iframe{width:100%;height:min(66vh,560px);border:0;background:#071914;border-radi
 <div class="preview">
 <label>Formato<select id="format"><option value="portrait">Verticale · apertura</option><option value="inbox">Banner · storico</option><option value="landscape">Orizzontale · inline</option></select></label>
 <iframe id="preview" sandbox="" title="Anteprima locandina"></iframe>
+<div id="mediaPreview" class="media-card" hidden role="group" aria-label="Anteprima pubblicità grafica">
+<div class="media-art"><img id="mediaPreviewImage" alt=""></div>
+<div id="mediaPreviewCopy" class="media-copy"><b id="mediaPreviewTitle"></b><small id="mediaPreviewBody"></small><span id="mediaPreviewCta" class="media-cta"></span></div>
+</div>
 </div>
 <p class="hint">L'editor è una prima versione HTML/CSS. La pubblicazione richiede PR, validazione nel repository privato e promozione esplicita.</p>
 </section>
 </main>
 <script>
 const TEMPLATE_PRESETS = [{"id":"product-launch-v1","label":"Lancio applicazione","description":"Poster immersivo, banner 16:9, notifica e pulsanti","creative":{"format":"html_css_static","portraitHtmlTemplate":"\u003cstyle>*{box-sizing:border-box}.poster{position:relative;width:100%;height:100%;overflow:hidden;padding:8%;display:flex;flex-direction:column;justify-content:flex-end;background:radial-gradient(circle at 75% 25%,#227258,#0a2d23 45%,#071812 86%);color:#f3fff7;font-family:system-ui,sans-serif}.orb{position:absolute;top:15%;left:19%;width:62%;aspect-ratio:1;border-radius:50%;border:2px solid #a4fcd080;box-shadow:0 0 80px #77ffc233,inset 0 0 80px #50ffac33}.eyebrow{font-size:12px;letter-spacing:.2em;color:#8fffc5;font-weight:800}.headline{font-size:clamp(32px,9vw,60px);line-height:1.03;letter-spacing:-.055em;font-weight:900;margin:16px 0}.deck{font-size:clamp(14px,3.6vw,19px);line-height:1.45;color:#cde5d8}.foot{margin-top:14px;font-size:11px;letter-spacing:.12em;color:#b1d3bf}.cta{display:inline-block;background:#90ffbf;color:#062819;border-radius:12px;padding:13px 18px;text-decoration:none;font-weight:900;margin-top:17px;max-width:max-content}\u003c/style>\u003csection class=\"poster\">\u003cdiv class=\"orb\">\u003c/div>\u003cdiv class=\"eyebrow\">{{eyebrow}}\u003c/div>\u003ch1 class=\"headline\">{{headline}}\u003c/h1>\u003cdiv class=\"deck\">{{deck}}\u003c/div>{{cta:primary}}\u003cdiv class=\"foot\">{{footer}}\u003c/div>\u003c/section>","landscapeHtmlTemplate":"\u003cstyle>*{box-sizing:border-box}.poster{width:100%;height:100%;overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:center;padding:7%;background:radial-gradient(circle at 90% 30%,#1b7051,#0a2d23 45%,#061710 100%);color:#f3fff7;font-family:system-ui,sans-serif}.orb{position:absolute;right:-4%;top:3%;width:44%;aspect-ratio:1;border-radius:50%;border:2px solid #a4fcd077;box-shadow:0 0 60px #77ffc222}.eyebrow{font-size:11px;letter-spacing:.14em;color:#a1ffce;font-weight:850}.headline{font-size:clamp(21px,6vw,44px);line-height:1.04;letter-spacing:-.045em;font-weight:900;max-width:76%;margin:11px 0}.deck{font-size:clamp(11px,2.4vw,15px);line-height:1.35;color:#d1e3d8;max-width:72%}.cta{display:inline-block;background:#90ffbf;color:#062819;text-decoration:none;border-radius:9px;padding:9px 14px;font-size:12px;font-weight:850;margin-top:11px;max-width:max-content}\u003c/style>\u003csection class=\"poster\">\u003cdiv class=\"orb\">\u003c/div>\u003cdiv class=\"eyebrow\">{{eyebrow}}\u003c/div>\u003ch2 class=\"headline\">{{headline}}\u003c/h2>\u003cdiv class=\"deck\">{{deck}}\u003c/div>{{cta:primary}}\u003c/section>","inboxHtmlTemplate":"\u003cstyle>*{box-sizing:border-box}.poster{width:100%;height:100%;overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:center;padding:7%;background:radial-gradient(circle at 90% 30%,#1b7051,#0a2d23 45%,#061710 100%);color:#f3fff7;font-family:system-ui,sans-serif}.orb{position:absolute;right:-4%;top:3%;width:44%;aspect-ratio:1;border-radius:50%;border:2px solid #a4fcd077;box-shadow:0 0 60px #77ffc222}.eyebrow{font-size:11px;letter-spacing:.14em;color:#a1ffce;font-weight:850}.headline{font-size:clamp(21px,6vw,44px);line-height:1.04;letter-spacing:-.045em;font-weight:900;max-width:76%;margin:11px 0}.deck{font-size:clamp(11px,2.4vw,15px);line-height:1.35;color:#d1e3d8;max-width:72%}.cta{display:inline-block;background:#90ffbf;color:#062819;text-decoration:none;border-radius:9px;padding:9px 14px;font-size:12px;font-weight:850;margin-top:11px;max-width:max-content}\u003c/style>\u003csection class=\"poster\">\u003cdiv class=\"orb\">\u003c/div>\u003cdiv class=\"eyebrow\">{{eyebrow}}\u003c/div>\u003ch2 class=\"headline\">{{headline}}\u003c/h2>\u003cdiv class=\"deck\">{{deck}}\u003c/div>\u003c/section>"}},{"id":"editorial-v1","label":"Avviso generale","description":"Titoli e contenuti con gerarchia tipografica sobria","creative":{"format":"html_css_static","portraitHtmlTemplate":"\u003cstyle>*{box-sizing:border-box}.poster{position:relative;width:100%;height:100%;overflow:hidden;padding:8%;display:flex;flex-direction:column;justify-content:flex-end;background:radial-gradient(circle at 75% 25%,#227258,#0a2d23 45%,#071812 86%);color:#f3fff7;font-family:system-ui,sans-serif}.orb{position:absolute;top:15%;left:19%;width:62%;aspect-ratio:1;border-radius:50%;border:2px solid #a4fcd080;box-shadow:0 0 80px #77ffc233,inset 0 0 80px #50ffac33}.eyebrow{font-size:12px;letter-spacing:.2em;color:#8fffc5;font-weight:800}.headline{font-size:clamp(32px,9vw,60px);line-height:1.03;letter-spacing:-.055em;font-weight:900;margin:16px 0}.deck{font-size:clamp(14px,3.6vw,19px);line-height:1.45;color:#cde5d8}.foot{margin-top:14px;font-size:11px;letter-spacing:.12em;color:#b1d3bf}.cta{display:inline-block;background:#90ffbf;color:#062819;border-radius:12px;padding:13px 18px;text-decoration:none;font-weight:900;margin-top:17px;max-width:max-content}\u003c/style>\u003csection class=\"poster\">\u003cdiv class=\"eyebrow\">{{eyebrow}}\u003c/div>\u003ch1 class=\"headline\">{{headline}}\u003c/h1>\u003cdiv class=\"deck\">{{deck}}\u003c/div>{{cta:primary}}\u003cdiv class=\"foot\">{{footer}}\u003c/div>\u003c/section>","landscapeHtmlTemplate":"\u003cstyle>*{box-sizing:border-box}.poster{width:100%;height:100%;overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:center;padding:7%;background:radial-gradient(circle at 90% 30%,#1b7051,#0a2d23 45%,#061710 100%);color:#f3fff7;font-family:system-ui,sans-serif}.orb{position:absolute;right:-4%;top:3%;width:44%;aspect-ratio:1;border-radius:50%;border:2px solid #a4fcd077;box-shadow:0 0 60px #77ffc222}.eyebrow{font-size:11px;letter-spacing:.14em;color:#a1ffce;font-weight:850}.headline{font-size:clamp(21px,6vw,44px);line-height:1.04;letter-spacing:-.045em;font-weight:900;max-width:76%;margin:11px 0}.deck{font-size:clamp(11px,2.4vw,15px);line-height:1.35;color:#d1e3d8;max-width:72%}.cta{display:inline-block;background:#90ffbf;color:#062819;text-decoration:none;border-radius:9px;padding:9px 14px;font-size:12px;font-weight:850;margin-top:11px;max-width:max-content}\u003c/style>\u003csection class=\"poster\">\u003cdiv class=\"eyebrow\">{{eyebrow}}\u003c/div>\u003ch2 class=\"headline\">{{headline}}\u003c/h2>\u003cdiv class=\"deck\">{{deck}}\u003c/div>{{cta:primary}}\u003c/section>","inboxHtmlTemplate":"\u003cstyle>*{box-sizing:border-box}.poster{width:100%;height:100%;overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:center;padding:7%;background:radial-gradient(circle at 90% 30%,#1b7051,#0a2d23 45%,#061710 100%);color:#f3fff7;font-family:system-ui,sans-serif}.orb{position:absolute;right:-4%;top:3%;width:44%;aspect-ratio:1;border-radius:50%;border:2px solid #a4fcd077;box-shadow:0 0 60px #77ffc222}.eyebrow{font-size:11px;letter-spacing:.14em;color:#a1ffce;font-weight:850}.headline{font-size:clamp(21px,6vw,44px);line-height:1.04;letter-spacing:-.045em;font-weight:900;max-width:76%;margin:11px 0}.deck{font-size:clamp(11px,2.4vw,15px);line-height:1.35;color:#d1e3d8;max-width:72%}.cta{display:inline-block;background:#90ffbf;color:#062819;text-decoration:none;border-radius:9px;padding:9px 14px;font-size:12px;font-weight:850;margin-top:11px;max-width:max-content}\u003c/style>\u003csection class=\"poster\">\u003cdiv class=\"eyebrow\">{{eyebrow}}\u003c/div>\u003ch2 class=\"headline\">{{headline}}\u003c/h2>\u003cdiv class=\"deck\">{{deck}}\u003c/div>\u003c/section>"}}];
-const routing = {"schemaVersion":1,"contentRevision":"21b885d070a15a12a546a2c03c4fec9b552728d5","generatedAt":"2026-11-01T00:20:50Z","channels":[{"id":"global","label":"Tutto l’ecosistema","description":"Tutti i prodotti registrati","kind":"global"},{"id":"family.mobile","label":"Tutte le app mobile","description":"Applicazioni per smartphone e tablet, su ogni sistema operativo","kind":"family"},{"id":"family.desktop","label":"Software desktop","description":"Programmi per Windows, Linux e macOS","kind":"family"},{"id":"family.web","label":"Applicazioni e servizi web","description":"Prodotti accessibili da browser","kind":"family"},{"id":"platform.android","label":"Android","description":"Applicazioni Android","kind":"platform"},{"id":"platform.ios","label":"iOS","description":"Applicazioni iPhone e iPad","kind":"platform"},{"id":"platform.windows","label":"Windows","description":"Software per Windows","kind":"platform"},{"id":"platform.linux","label":"Linux","description":"Software per Linux","kind":"platform"},{"id":"platform.macos","label":"macOS","description":"Software per macOS","kind":"platform"},{"id":"platform.browser","label":"Browser","description":"Prodotti web","kind":"platform"},{"id":"product.cablecheck","label":"CableCheck","description":"Solo CableCheck","kind":"product"},{"id":"product.wakecuppc","label":"WakeCupPC","description":"Solo WakeCupPC","kind":"product"},{"id":"product.orb","label":"Orb","description":"Solo Orb","kind":"product"},{"id":"product.monissh","label":"MoniSSH","description":"Solo MoniSSH","kind":"product"},{"id":"group.beta","label":"Anteprime e beta","description":"Prodotti selezionati per comunicazioni sperimentali","kind":"group"},{"id":"group.opensource","label":"Progetti open source","description":"Software pubblicato o sviluppato apertamente","kind":"group"}],"products":[{"id":"cablecheck","name":"CableCheck","integration":"connected","families":["mobile"],"platforms":["android"],"subscriptions":["global","family.mobile","platform.android","product.cablecheck"]},{"id":"wakecuppc","name":"WakeCupPC","integration":"planned","families":["mobile"],"platforms":["android"],"subscriptions":["global","family.mobile","platform.android","product.wakecuppc"]},{"id":"orb","name":"Orb","integration":"planned","families":["mobile"],"platforms":["android"],"subscriptions":["global","family.mobile","platform.android","product.orb","group.beta"]},{"id":"monissh","name":"MoniSSH","integration":"planned","families":["desktop"],"platforms":["windows","linux"],"subscriptions":["global","family.desktop","platform.windows","platform.linux","product.monissh","group.beta","group.opensource"]}]};
+const routing = {"schemaVersion":1,"contentRevision":"c1001bfd69c8a47ab2868feb92e02001d5a34f93","generatedAt":"2026-11-01T16:15:40Z","channels":[{"id":"global","label":"Tutto l’ecosistema","description":"Tutti i prodotti registrati","kind":"global"},{"id":"family.mobile","label":"Tutte le app mobile","description":"Applicazioni per smartphone e tablet, su ogni sistema operativo","kind":"family"},{"id":"family.desktop","label":"Software desktop","description":"Programmi per Windows, Linux e macOS","kind":"family"},{"id":"family.web","label":"Applicazioni e servizi web","description":"Prodotti accessibili da browser","kind":"family"},{"id":"platform.android","label":"Android","description":"Applicazioni Android","kind":"platform"},{"id":"platform.ios","label":"iOS","description":"Applicazioni iPhone e iPad","kind":"platform"},{"id":"platform.windows","label":"Windows","description":"Software per Windows","kind":"platform"},{"id":"platform.linux","label":"Linux","description":"Software per Linux","kind":"platform"},{"id":"platform.macos","label":"macOS","description":"Software per macOS","kind":"platform"},{"id":"platform.browser","label":"Browser","description":"Prodotti web","kind":"platform"},{"id":"product.cablecheck","label":"CableCheck","description":"Solo CableCheck","kind":"product"},{"id":"product.wakecuppc","label":"WakeCupPC","description":"Solo WakeCupPC","kind":"product"},{"id":"product.orb","label":"Orb","description":"Solo Orb","kind":"product"},{"id":"product.monissh","label":"MoniSSH","description":"Solo MoniSSH","kind":"product"},{"id":"group.beta","label":"Anteprime e beta","description":"Prodotti selezionati per comunicazioni sperimentali","kind":"group"},{"id":"group.opensource","label":"Progetti open source","description":"Software pubblicato o sviluppato apertamente","kind":"group"}],"products":[{"id":"cablecheck","name":"CableCheck","integration":"connected","families":["mobile"],"platforms":["android"],"subscriptions":["global","family.mobile","platform.android","product.cablecheck"]},{"id":"wakecuppc","name":"WakeCupPC","integration":"planned","families":["mobile"],"platforms":["android"],"subscriptions":["global","family.mobile","platform.android","product.wakecuppc"]},{"id":"orb","name":"Orb","integration":"planned","families":["mobile"],"platforms":["android"],"subscriptions":["global","family.mobile","platform.android","product.orb","group.beta"]},{"id":"monissh","name":"MoniSSH","integration":"planned","families":["desktop"],"platforms":["windows","linux"],"subscriptions":["global","family.desktop","platform.windows","platform.linux","product.monissh","group.beta","group.opensource"]}]};
 const selectedAudiences = new Set(['product.cablecheck']);
 const optionsNode = document.getElementById('audienceOptions');
 function redrawRecipients() {
@@ -123,8 +155,9 @@ function redrawRecipients() {
     preview.append(badge);
   }
   const validSchedule = previewSchedule();
-  document.getElementById('download').disabled = !enabled || !validSchedule;
-  document.getElementById('copy').disabled = !enabled || !validSchedule;
+  const validMedia=mediaValidation();
+  document.getElementById('download').disabled = !enabled || !validSchedule || !validMedia;
+  document.getElementById('copy').disabled = !enabled || !validSchedule || !validMedia;
 }
 function schedulePhases() {
   if (!document.getElementById('scheduleEnabled').checked) return undefined;
@@ -174,6 +207,88 @@ function setupChannels() {
   }
   redrawRecipients();
 }
+
+const imageFiles={portrait:null,inbox:null};
+const MEDIA_LIMIT_BYTES=1_500_000;
+const MEDIA_LIMIT_PIXELS=8_000_000;
+const MEDIA_MAX_SIDE=4096;
+function imageName(variant) {
+  const id=document.getElementById('id').value.trim();
+  if(!/^[a-z0-9-]{6,96}$/.test(id))throw new Error('ID campagna non valido.');
+  const image=imageFiles[variant];
+  if(!image)throw new Error('Carica entrambe le immagini.');
+  return id.slice(0,70)+'-'+variant+'.'+image.extension;
+}
+function imageReady() {
+  return imageFiles.portrait && imageFiles.inbox &&
+    get('portraitAlt').trim().length>0 && get('inboxAlt').trim().length>0 &&
+    document.getElementById('mediaApproved').checked &&
+    /^[a-z0-9-]{6,96}$/.test(get('id'));
+}
+function mediaValidation() {
+  const enabled=get('creativeType')==='image_ad';
+  document.getElementById('mediaPanel').hidden=!enabled;
+  const ready=!enabled || Boolean(imageReady());
+  document.getElementById('mediaValidation').textContent=!enabled?'':ready
+    ?'Due immagini verificate. Scarica JSON e file binari con i nomi suggeriti.'
+    :'Carica e verifica poster + banner, compila i testi alternativi e approva la correttezza del copy stampato nelle immagini.';
+  for(const variant of ['portrait','inbox']){
+    const node=document.getElementById(variant==='portrait'?'portraitMediaStatus':'inboxMediaStatus');
+    const file=imageFiles[variant];
+    node.textContent=file
+      ?variant.toUpperCase()+': '+file.width+'×'+file.height+' · '+file.bytes+' byte · SHA-256 '+file.sha256.slice(0,16)+'…\n'
+        +'Output: content/media/'+( /^[a-z0-9-]{6,96}$/.test(get('id'))?imageName(variant):'[ID campagna da correggere]')
+      :'Nessun file '+(variant==='portrait'?'poster':'banner')+' ancora verificato.';
+    document.getElementById(variant==='portrait'?'downloadPortraitImage':'downloadInboxImage').disabled=!file || !ready;
+  }
+  return ready;
+}
+function imageSignature(bytes) {
+  const prefix=(...numbers)=>numbers.every((n,i)=>bytes[i]===n);
+  if(prefix(137,80,78,71,13,10,26,10))return {mime:'image/png',extension:'png'};
+  if(prefix(255,216,255)&&bytes[bytes.length-2]===255&&bytes[bytes.length-1]===217)return {mime:'image/jpeg',extension:'jpg'};
+  if(bytes.length>=16 && String.fromCharCode(...bytes.slice(0,4))==='RIFF' &&
+     String.fromCharCode(...bytes.slice(8,12))==='WEBP')return {mime:'image/webp',extension:'webp'};
+  throw new Error('Formato immagine non valido: JPEG, PNG o WebP richiesto.');
+}
+async function selectImage(variant,file) {
+  const status=document.getElementById(variant==='portrait'?'portraitMediaStatus':'inboxMediaStatus');
+  const previous=imageFiles[variant];
+  if(previous)URL.revokeObjectURL(previous.url);
+  imageFiles[variant]=null;
+  if(!file){status.textContent='Nessun file selezionato';mediaValidation();redrawRecipients();preview();return;}
+  try{
+    if(file.size<25||file.size>MEDIA_LIMIT_BYTES)throw new Error('File fuori dal limite 1,5 MB.');
+    if(!crypto?.subtle?.digest)throw new Error('SHA-256 non disponibile: usa lo Studio via HTTPS.');
+    const bytes=new Uint8Array(await file.arrayBuffer());
+    const {mime,extension}=imageSignature(bytes);
+    if(file.type && file.type!==mime)throw new Error('MIME dichiarato diverso dai byte.');
+    const declaredExt=file.name.split('.').pop().toLowerCase();
+    if(!['jpg','jpeg','png','webp'].includes(declaredExt) ||
+      !(declaredExt===extension || extension==='jpg'&&declaredExt==='jpeg'))
+      throw new Error('Estensione del file non coerente col contenuto.');
+    const url=URL.createObjectURL(file);
+    try{
+      const img=new Image();img.src=url;await img.decode();
+      const width=img.naturalWidth,height=img.naturalHeight;
+      if(!width||!height||width>MEDIA_MAX_SIDE||height>MEDIA_MAX_SIDE||
+        width*height>MEDIA_LIMIT_PIXELS)throw new Error('Dimensioni fuori dai limiti: 4096 px per lato, 8 MP.');
+      const digest=new Uint8Array(await crypto.subtle.digest('SHA-256',bytes));
+      const sha256=Array.from(digest,b=>b.toString(16).padStart(2,'0')).join('');
+      imageFiles[variant]={file,url,mime,extension,bytes:file.size,width,height,sha256};
+    }catch(error){URL.revokeObjectURL(url);throw error;}
+    status.textContent='Immagine validata.'; 
+  }catch(error){status.textContent='ERRORE: '+String(error.message||error); }
+  mediaValidation();redrawRecipients();preview();
+}
+function downloadImage(variant){
+  const item=imageFiles[variant];if(!item||!imageReady())return;
+  const link=document.createElement('a');link.href=item.url;link.download=imageName(variant);link.click();
+}
+document.getElementById('portraitImage').onchange=e=>selectImage('portrait',e.target.files?.[0]);
+document.getElementById('inboxImage').onchange=e=>selectImage('inbox',e.target.files?.[0]);
+document.getElementById('downloadPortraitImage').onclick=()=>downloadImage('portrait');
+document.getElementById('downloadInboxImage').onclick=()=>downloadImage('inbox');
 
 let actionSlots = [];
 const ACTION_KINDS = [
@@ -239,21 +354,57 @@ function render(t){return t.replace(/{{\s*(title|body|eyebrow|headline|deck|foot
 });}
 function preview(){
  const which=get('format');const fragment=render(get(which==='portrait'?'template':which==='inbox'?'inboxTemplate':'landscape'));
+ const variant=which==='portrait'?'portrait':'inbox';
+ const image=get('creativeType')==='image_ad'?imageFiles[variant]:null;
+ const mediaFrame=document.getElementById('mediaPreview');
+ const webFrame=document.getElementById('preview');
+ mediaFrame.hidden=!image;
+ webFrame.hidden=Boolean(image);
+ if(image){
+   mediaFrame.classList.toggle('wide',which!=='portrait');
+   mediaFrame.style.backgroundColor=get('mediaBackground');
+   document.getElementById('mediaPreviewImage').src=image.url;
+   document.getElementById('mediaPreviewImage').alt=get(variant==='portrait'?'portraitAlt':'inboxAlt');
+   document.getElementById('mediaPreviewImage').style.objectFit='contain';
+   const copy=document.getElementById('mediaPreviewCopy');
+   copy.style.backgroundColor=get('mediaBackground');
+   copy.style.color=get('mediaForeground');
+   copy.hidden=which==='inbox';
+   document.getElementById('mediaPreviewTitle').textContent=get('title');
+   document.getElementById('mediaPreviewBody').textContent=get('body');
+   const cta=document.getElementById('mediaPreviewCta');
+   const action=actionSlots.find(a=>a.id==='primary');
+   cta.textContent=action?.label||'';
+   cta.hidden=!action;
+   cta.style.backgroundColor=get('mediaAccent');
+   cta.style.color=get('mediaBackground');
+ }
+
  const frame=document.getElementById('preview');
  frame.style.height=which==='portrait'?'min(66vh,560px)':'240px';
  frame.srcdoc='<!doctype html><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src \'none\'; style-src \'unsafe-inline\'"><style>body{margin:0;overflow:hidden}</style>'+fragment;
 }
 function source(){
  const locale={title:get('title'),body:get('body'),eyebrow:get('eyebrow'),headline:get('headline'),deck:get('deck'),footer:get('footer')};
- return {schemaVersion:2,id:get('id'),revision:1,status:'draft',audiences:[...selectedAudiences],
+ const campaign={schemaVersion:2,id:get('id'),revision:1,status:'draft',audiences:[...selectedAudiences],
  templateId:get('templatePreset'),notification:{it:{title:get('pushTitle'),body:get('pushBody')}},
  actions:editorialActions(),environments:[get('environment')],placements:['launch_modal','inbox','inline_promo'],
  ...(schedulePhases()?{prioritySchedule:schedulePhases()}:{}),
  startsAt:get('start')+':00Z',expiresAt:get('end')?get('end')+':00Z':null,priority:Number(get('priority')),frequency:'once_per_revision',
  localizations:{it:locale},creative:{format:'html_css_static',portraitHtmlTemplate:get('template'),landscapeHtmlTemplate:get('landscape'),inboxHtmlTemplate:get('inboxTemplate')},action:{kind:'none'}};
+ if(get('creativeType')==='image_ad'){
+   if(!imageReady())throw new Error('Immagini mancanti o non approvate.');
+   campaign.creativeMedia={schemaVersion:1,kind:'image_ad',assets:{
+     portrait:{source:'media/'+imageName('portrait'),fit:'contain',alt:{it:get('portraitAlt').trim()}},
+     inbox:{source:'media/'+imageName('inbox'),fit:'contain',alt:{it:get('inboxAlt').trim()}}
+   },style:{backgroundColor:get('mediaBackground').toUpperCase(),
+     foregroundColor:get('mediaForeground').toUpperCase(),accentColor:get('mediaAccent').toUpperCase()}};
+ }
+ return campaign;
 }
 document.querySelectorAll('input,textarea,select').forEach(el=>el.addEventListener('input',()=>{preview();redrawRecipients();}));
 document.getElementById('templatePreset').onchange=applyPreset;
+document.getElementById('creativeType').onchange=()=>{mediaValidation();redrawRecipients();preview();};
 function nextActionId(actions){return ['primary','secondary','third','fourth'].find(id=>!actions.some(a=>a.id===id))??null;}
 document.getElementById('addAction').onclick=()=>{
   const id=nextActionId(actionSlots);
