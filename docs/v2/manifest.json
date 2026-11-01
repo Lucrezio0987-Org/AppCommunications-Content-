@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "contentRevision": "c1001bfd69c8a47ab2868feb92e02001d5a34f93",
-  "generatedAt": "2026-11-01T16:15:40Z",
+  "contentRevision": "05dc76de13b4c03b821d0b1c4a870b5123bb654c",
+  "generatedAt": "2026-11-01T18:51:24Z",
   "environments": [
     "collaudo",
     "production"
@@ -95,6 +95,21 @@
       "bytes": 9328
     },
     {
+      "path": "v2/assets/collaudo/de/2026-11-01-cablecheck-launch-r1-inbox-5f154101d047.html",
+      "sha256": "5f154101d04767737534288dbcb57c6533d88659afe16dd522ff48ff498de62f",
+      "bytes": 10220
+    },
+    {
+      "path": "v2/assets/collaudo/de/2026-11-01-cablecheck-launch-r1-landscape-da83e957e3fa.html",
+      "sha256": "da83e957e3fae2a2ff710fb3e769229ae915a0d1af7e3e3702f6ff8fea271dc0",
+      "bytes": 10283
+    },
+    {
+      "path": "v2/assets/collaudo/de/2026-11-01-cablecheck-launch-r1-portrait-9ccafc2fa0fd.html",
+      "sha256": "9ccafc2fa0fd1df52f5bb4ef578049953ab93f33f16751b3c01b6956486242b9",
+      "bytes": 10458
+    },
+    {
       "path": "v2/assets/collaudo/en/2026-10-31-wakecuppc-cross-promo-r4-inbox-788d925a4fc2.html",
       "sha256": "788d925a4fc274ccf2931597eb062e8e12c61c4bad6fb5fc369d8ec2226ef1e2",
       "bytes": 8930
@@ -108,6 +123,21 @@
       "path": "v2/assets/collaudo/en/2026-10-31-wakecuppc-cross-promo-r4-portrait-48124f916cd8.html",
       "sha256": "48124f916cd8fc98d2479a54384f66cd41913995d0c93676f671d795ddf91ee1",
       "bytes": 9336
+    },
+    {
+      "path": "v2/assets/collaudo/en/2026-11-01-cablecheck-launch-r1-inbox-05729a0cda5b.html",
+      "sha256": "05729a0cda5b1446e1d8abf536b9423287c3e47de6751a77fe0b13931eed2848",
+      "bytes": 10218
+    },
+    {
+      "path": "v2/assets/collaudo/en/2026-11-01-cablecheck-launch-r1-landscape-51a2407d9743.html",
+      "sha256": "51a2407d97432a4aff2d6c5079f00e95f03d7060627019cff3b5d44cc7ace39a",
+      "bytes": 10282
+    },
+    {
+      "path": "v2/assets/collaudo/en/2026-11-01-cablecheck-launch-r1-portrait-f0a359c3892f.html",
+      "sha256": "f0a359c3892faa87e382bbeb698ed246b9d3cccd4077d1ed7abbe556db8a83f4",
+      "bytes": 10457
     },
     {
       "path": "v2/assets/collaudo/es/2026-10-31-wakecuppc-cross-promo-r4-inbox-92649ad327d9.html",
@@ -125,6 +155,21 @@
       "bytes": 9335
     },
     {
+      "path": "v2/assets/collaudo/es/2026-11-01-cablecheck-launch-r1-inbox-86067f05023b.html",
+      "sha256": "86067f05023b16c6f9a1129c330033c9aea0fd2b251e7d4f70f73ac5a0750882",
+      "bytes": 10219
+    },
+    {
+      "path": "v2/assets/collaudo/es/2026-11-01-cablecheck-launch-r1-landscape-7269325d2146.html",
+      "sha256": "7269325d2146bfc938b148634f6932d2d5d30fa61538ab2ac2140e860ff47463",
+      "bytes": 10282
+    },
+    {
+      "path": "v2/assets/collaudo/es/2026-11-01-cablecheck-launch-r1-portrait-3d707610ac08.html",
+      "sha256": "3d707610ac0833ce88292bd1f14d4d4f336916801c2baffce6fd38c5000fb872",
+      "bytes": 10457
+    },
+    {
       "path": "v2/assets/collaudo/fr/2026-10-31-wakecuppc-cross-promo-r4-inbox-900e4df534c5.html",
       "sha256": "900e4df534c53dcd775fbcd79fa9e6a4fc58599f736532a2d1999b8b598066e5",
       "bytes": 8933
@@ -138,6 +183,21 @@
       "path": "v2/assets/collaudo/fr/2026-10-31-wakecuppc-cross-promo-r4-portrait-cb86d785865b.html",
       "sha256": "cb86d785865b7ef393965da364f7d26882c4c129c9f7d59f953e217220064c1a",
       "bytes": 9352
+    },
+    {
+      "path": "v2/assets/collaudo/fr/2026-11-01-cablecheck-launch-r1-inbox-9d0cff0c673f.html",
+      "sha256": "9d0cff0c673f4534bfbd9506f5a5bcc3a2b6468c3692e5b6be8f9eb5de8caca1",
+      "bytes": 10232
+    },
+    {
+      "path": "v2/assets/collaudo/fr/2026-11-01-cablecheck-launch-r1-landscape-28c6cb4f8404.html",
+      "sha256": "28c6cb4f840444856bec4e197d6baf8009aa1b84a1e105b2d2d143a7e529375b",
+      "bytes": 10305
+    },
+    {
+      "path": "v2/assets/collaudo/fr/2026-11-01-cablecheck-launch-r1-portrait-2cc2e73204a7.html",
+      "sha256": "2cc2e73204a7687cb84a9ef89d3ff00b9598c5c98e489dc2d33a4144f0e233b7",
+      "bytes": 10480
     },
     {
       "path": "v2/assets/collaudo/it/2026-10-31-wakecuppc-cross-promo-r4-inbox-7f943828c555.html",
@@ -155,6 +215,21 @@
       "bytes": 9347
     },
     {
+      "path": "v2/assets/collaudo/it/2026-11-01-cablecheck-launch-r1-inbox-0e2367ecc577.html",
+      "sha256": "0e2367ecc577b6ff7ed5788da6def6ee1981147672c9f11f435602cad9e8d068",
+      "bytes": 10225
+    },
+    {
+      "path": "v2/assets/collaudo/it/2026-11-01-cablecheck-launch-r1-landscape-2bc41537e970.html",
+      "sha256": "2bc41537e970ea99cad3bc54157b06f4cae014888c2887f4f1b91a7a1078b337",
+      "bytes": 10299
+    },
+    {
+      "path": "v2/assets/collaudo/it/2026-11-01-cablecheck-launch-r1-portrait-0d6a26d457f8.html",
+      "sha256": "0d6a26d457f8f815bbf7c89e59222fd4ff589f2c4819cb22fda3e336db1c24aa",
+      "bytes": 10474
+    },
+    {
       "path": "v2/assets/collaudo/pt/2026-10-31-wakecuppc-cross-promo-r4-inbox-b826d9b7d6fb.html",
       "sha256": "b826d9b7d6fbbe393989699d334f01bd341cfb50aae07df8db808365dd1ef179",
       "bytes": 8930
@@ -168,6 +243,21 @@
       "path": "v2/assets/collaudo/pt/2026-10-31-wakecuppc-cross-promo-r4-portrait-48a63320d9fe.html",
       "sha256": "48a63320d9fee30efbb0177be2211a8824ef85f4d04e8c5f25c725c8972dd85a",
       "bytes": 9324
+    },
+    {
+      "path": "v2/assets/collaudo/pt/2026-11-01-cablecheck-launch-r1-inbox-cd2c107dc2d6.html",
+      "sha256": "cd2c107dc2d6ffe4c6e01e1dd766f8f8cff0097edc91951388e6ccc81b839585",
+      "bytes": 10218
+    },
+    {
+      "path": "v2/assets/collaudo/pt/2026-11-01-cablecheck-launch-r1-landscape-10e7c5fbf1ad.html",
+      "sha256": "10e7c5fbf1ada4b49a1ae7caf44b7f9bc015aafc48142208b65d45b27f28503c",
+      "bytes": 10280
+    },
+    {
+      "path": "v2/assets/collaudo/pt/2026-11-01-cablecheck-launch-r1-portrait-a091647e486c.html",
+      "sha256": "a091647e486c57010a1f72e41484faecb8c35d96aec8a4492279d5238ca8273d",
+      "bytes": 10455
     }
   ]
 }

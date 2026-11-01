@@ -1,0 +1,82 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src &#39;none&#39;; script-src &#39;none&#39;; connect-src &#39;none&#39;; style-src &#39;unsafe-inline&#39;; img-src data:; font-src &#39;none&#39;; frame-src &#39;none&#39;; form-action &#39;none&#39;; base-uri &#39;none&#39;"><style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#071914}*,*:before,*:after{box-sizing:border-box}</style></head><body><style>
+*,:before,:after{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}
+:root{--bg:#050706;--surface:#0A0D0B;--raised:#111713;--line:#1E2720;--line2:#344338;--energy:#4FE36B;--info:#69D2FF;--ink:#F6F8F6;--muted:#A4ACA6;--subtle:#829087}
+.creative{position:relative;isolation:isolate;width:100%;height:100%;overflow:hidden;background:#050706;color:var(--ink);font-family:system-ui,-apple-system,'Segoe UI',sans-serif;font-weight:500;line-height:1.3}
+.creative:before{content:'';position:absolute;top:-24%;right:-18%;width:77%;aspect-ratio:1;background:radial-gradient(circle,rgba(79,227,107,.067),transparent 69%);pointer-events:none}
+.creative:after{content:'';position:absolute;inset:0;border:1px solid rgba(164,172,166,.12);border-radius:inherit;pointer-events:none}
+.brand{position:relative;z-index:2;display:flex;align-items:center;gap:8px;font-weight:900;font-size:19px;letter-spacing:-.055em;line-height:1;white-space:nowrap}
+.brand b{color:var(--energy)}
+.appmark{width:25px;height:25px;display:grid;place-items:center;border:1px solid #295337;border-radius:8px;background:linear-gradient(150deg,#10291A,#0A1510);flex:none}
+.appmark:before{content:'';display:block;width:12px;height:17px;border:1.8px solid var(--energy);border-radius:3.5px;box-shadow:inset 0 0 0 2px #0c1a10;background:linear-gradient(0deg,#4FE36B 0 43%,transparent 44%)}
+.kicker{position:relative;z-index:2;color:#87DCA0;font-weight:850;font-size:9px;line-height:1.25;letter-spacing:.14em;text-transform:uppercase}
+.head{position:relative;z-index:2;margin:0;color:var(--ink);font-weight:900;letter-spacing:-.045em;line-height:1.07;overflow-wrap:break-word;word-break:normal}
+.deck{position:relative;z-index:2;margin:0;color:var(--muted);font-weight:500;line-height:1.35;overflow-wrap:break-word}
+.foot{position:relative;z-index:2;color:#96B59F;font-size:9px;letter-spacing:.10em;font-weight:850;line-height:1.2}
+/* The 260-degree arc is derived from the real ChargeArcGauge. No fake percentage. */
+.gauge{position:relative;display:grid;place-items:center;flex:none;aspect-ratio:1;border-radius:100%;background:conic-gradient(from 140deg,var(--energy) 0deg 184deg,var(--line2) 184deg 260deg,transparent 260deg 360deg);filter:drop-shadow(0 0 14px #4FE36B12)}
+.gauge:before{content:'';position:absolute;inset:7%;border-radius:50%;background:#101611}
+.gauge:after{content:'';position:absolute;inset:17%;border:1px solid #26372B;border-radius:50%}
+.cell{position:relative;z-index:2;width:27%;height:42%;border:2px solid var(--energy);border-radius:5px;background:linear-gradient(to top,rgba(79,227,107,.21) 0 34%,transparent 35%);transform:rotate(-2deg)}
+.cell:before{content:'';position:absolute;top:-5px;left:29%;width:40%;height:3px;border-radius:3px;background:var(--energy)}
+.cell:after{content:'';position:absolute;top:26%;left:32%;width:38%;height:54%;clip-path:polygon(42% 0%,100% 0%,57% 47%,95% 47%,10% 100%,37% 56%,0 56%);background:var(--energy)}
+/* Graph follows MonitorHeroAccent: a low-contrast grid and a single energy line with an info marker. */
+.curve{position:relative;height:48px;overflow:hidden;background:repeating-linear-gradient(to bottom,transparent 0,transparent 15px,#1A231D 16px);border-bottom:1px solid #344338}
+.curve:before{position:absolute;content:'';inset:1px 0 4px;background:linear-gradient(90deg,var(--energy) 0%,var(--energy) 54%,var(--info) 100%);clip-path:polygon(0% 83%,10% 74%,22% 78%,36% 43%,49% 47%,62% 38%,75% 59%,89% 24%,100% 30%,100% 36%,89% 30%,75% 65%,62% 44%,49% 53%,36% 49%,22% 84%,10% 80%,0% 89%);opacity:.91}
+.curve:after{position:absolute;content:'';right:11%;top:17%;width:5px;height:5px;border-radius:50%;background:var(--info);box-shadow:0 0 11px #69D2FF44}
+.legend{display:flex;align-items:center;justify-content:space-between;gap:6px;color:#8FA69A;font-size:9px;font-weight:800;letter-spacing:.04em;white-space:nowrap}
+.legend b{color:var(--info);font-weight:850}
+.hero{position:relative;z-index:1;display:flex;align-items:center;gap:12px;min-width:0;background:linear-gradient(112deg,#111713 0%,#090D0B 94%);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.hero:before{content:'';position:absolute;width:63%;height:100%;right:0;top:0;background:radial-gradient(ellipse at 77% 28%,rgba(105,210,255,.036),transparent 65%);pointer-events:none}
+.metrics{position:relative;display:flex;flex-direction:column;justify-content:center;flex:1;gap:8px;min-width:0}
+.label{display:flex;align-items:center;gap:6px;font-weight:800;font-size:9px;letter-spacing:.13em;color:#A4B8A8}
+.label:before{content:'';width:5px;height:5px;border-radius:50%;background:var(--energy);box-shadow:0 0 9px #4FE36B77}
+/* Three product areas, not three new card containers. */
+.pillars{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pillar{position:relative;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.pillar+.pillar{border-left:1px solid var(--line)}
+.icon-monitor,.icon-test,.icon-care{position:relative;width:25px;height:19px;flex:none}
+.icon-monitor:before{content:'';position:absolute;left:1px;right:1px;top:3px;height:13px;border:1.5px solid var(--info);border-radius:4px}
+.icon-monitor:after{content:'';position:absolute;left:4px;right:4px;top:9px;height:2px;background:var(--energy);clip-path:polygon(0 65%,25% 65%,40% 0,57% 100%,73% 30%,100% 30%,100% 100%,0 100%)}
+.icon-test:before{content:'';position:absolute;left:2px;top:4px;width:21px;height:2px;background:var(--info);border-radius:2px;box-shadow:0 8px 0 var(--energy)}
+.icon-test:after{content:'';position:absolute;left:7px;top:1px;width:6px;height:6px;border-radius:50%;border:1px solid var(--info);background:#0a0d0b;box-shadow:8px 8px 0 -1px #0a0d0b,8px 8px 0 0 var(--energy)}
+.icon-care:before{content:'';position:absolute;left:4px;top:1px;width:17px;height:17px;border-radius:50%;border:3px solid var(--line2);border-top-color:var(--energy);border-right-color:var(--energy);transform:rotate(-30deg)}
+.icon-care:after{content:'';position:absolute;left:10px;top:7px;width:5px;height:5px;border-radius:50%;background:var(--energy)}
+/* PORTRAIT: fill the whole modal, leave proper breathing space around the main panel */
+.poster{display:flex;flex-direction:column;padding:6.4% 6.2% 5.8%;gap:0;border-radius:24px}
+.poster .brand{margin-bottom:8%}
+.poster .kicker{margin-bottom:2.2%}
+.poster .head{font-size:clamp(24px,7.4vw,42px);max-width:99%;margin-bottom:2.4%}
+.poster .deck{font-size:clamp(11px,3.55vw,17px);max-width:99%}
+.poster .hero{flex:1;min-height:110px;max-height:43%;padding:11px 12px;margin-top:5.8%;gap:13px}
+.poster .gauge{width:min(32vw,132px)}
+.poster .metrics{gap:7px}
+.poster .curve{height:45px}
+.poster .pillars{margin-top:5.1%;height:47px;flex:none}
+.poster .foot{text-align:center;margin-top:8px}
+/* INBOX: a distinct, typography-first 16:9 layout. */
+.inbox{border-radius:18px;display:flex;align-items:center;padding:5.5% 6.5%;gap:3%}
+.inbox .copy{position:relative;z-index:2;flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:5px}
+.inbox .brand{font-size:clamp(15px,4.6vw,22px);gap:6px;margin-bottom:1px}
+.inbox .appmark{width:20px;height:20px;border-radius:6px}
+.inbox .appmark:before{width:10px;height:13px;border-width:1.5px;border-radius:2px}
+.inbox .kicker{font-size:clamp(7px,1.9vw,10px);letter-spacing:.095em}
+.inbox .head{font-size:clamp(18px,5.55vw,30px);line-height:1.07;max-width:98%}
+.inbox .foot{font-size:clamp(7px,2.06vw,11px);letter-spacing:.035em;margin-top:1px}
+.inbox .hero{width:33%;height:76%;flex:none;display:grid;place-items:center;padding:5px;border-radius:14px;margin-left:0}
+.inbox .gauge{width:min(23vw,114px)}
+.inbox .metrics{display:none}
+/* LANDSCAPE: emphasize real UI information, rather than cropping the poster */
+.landscape{border-radius:18px;display:flex;align-items:center;padding:6% 6.8%;gap:3%}
+.landscape .copy{position:relative;z-index:2;width:50%;flex:0 0 50%;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:8px;min-width:0}
+.landscape .brand{font-size:clamp(18px,3.2vw,26px)}
+.landscape .kicker{font-size:clamp(9px,1.6vw,12px)}
+.landscape .head{font-size:clamp(24px,4.5vw,43px)}
+.landscape .deck{font-size:clamp(12px,2.15vw,17px)}
+.landscape .foot{font-size:clamp(9px,1.5vw,12px);margin-top:3px}
+.landscape .hero{flex:1;height:82%;margin-left:0;padding:13px 11px;gap:11px;border-radius:18px}
+.landscape .gauge{width:min(16.5vw,130px)}
+.landscape .metrics{gap:7px}
+.landscape .curve{height:38px}
+@media(max-width:340px){.poster .brand{margin-bottom:6%}.poster .head{font-size:clamp(22px,7vw,25px)}.poster .hero{margin-top:4%}.poster .pillars{margin-top:4%;height:43px}.poster .gauge{width:30vw}.inbox .head{font-size:clamp(17px,5.4vw,20px)}.inbox .hero{width:32%}.inbox .gauge{width:22vw}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style><section class="creative poster" aria-label="CableCheck"><div class="brand"><i class="appmark" aria-hidden="true"></i><span>Cable<b>Check</b></span></div><div class="kicker">NUOVA APP · ANDROID</div><h1 class="head">Capisci meglio ogni ricarica.</h1><p class="deck">Monitora. Confronta. Prenditi cura della batteria.</p><div class="hero" aria-hidden="true"><div class="gauge" aria-hidden="true"><div class="cell"></div></div><div class="metrics" aria-hidden="true"><div class="label">MONITOR</div><div class="curve"></div><div class="legend"><span>W · °C</span><b>mA</b></div></div></div><div class="pillars" aria-hidden="true"><div class="pillar"><i class="icon-monitor"></i></div><div class="pillar"><i class="icon-test"></i></div><div class="pillar"><i class="icon-care"></i></div></div><div class="foot">MONITOR · TEST · CURA</div></section></body></html>
