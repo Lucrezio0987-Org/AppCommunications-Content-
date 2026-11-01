@@ -20,7 +20,7 @@ Questa repository ospita **solo** annunci, traduzioni, catalogo applicazioni e a
 4. Le notifiche push FCM sono un'operazione separata e non vengono inviate automaticamente quando un annuncio viene modificato.
 
 ### Stato
-Il pilot è **CableCheck Collaudo**. Lo storico Novità usa campagne v2: la promozione WakeCupPC r2 è attualmente la revisione distribuita, con r4 HTML/CSS in revisione (PR #12). Nessuna pubblicazione in Produzione o push implicita.
+Il pilot è **CableCheck Collaudo**. Lo storico Novità usa campagne v2: la promozione WakeCupPC r2 è attualmente la revisione distribuita, con **r4 HTML/CSS approvata per Collaudo e integrata nel catalogo sorgente** ([PR #12](https://github.com/Lucrezio0987-Org/AppCommunications-Content-/pull/12)). Il feed remoto resta sulla r2 finché non viene eseguito [un nuovo run del publisher](https://github.com/Lucrezio0987-Org/AppCommunications/actions/workflows/publish-feed.yml); il test su CableCheck è tracciato in [AppCommunications #27](https://github.com/Lucrezio0987-Org/AppCommunications/issues/27). Nessuna pubblicazione in Produzione o push implicita.
 
 ## Creative system — standard multiprodotto
 
