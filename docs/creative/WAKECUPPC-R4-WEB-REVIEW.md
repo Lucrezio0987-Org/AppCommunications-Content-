@@ -1,6 +1,6 @@
 # WakeCupPC r4 — Creatività HTML/CSS (alternativa ufficiale alla r4 raster)
 
-**Stato: BOZZA PER REVISIONE VISIVA; NON PUBBLICARE AUTOMATICAMENTE**  
+**Stato: GRAFICA APPROVATA DAL PROPRIETARIO PER TEST IN COLLAUDO — 2026-11-01; verifica sul dispositivo ancora aperta; PRODUZIONE NON AUTORIZZATA**  
 **Decisione:** 1 novembre 2026 — preferire HTML/CSS responsive al montaggio di immagini della campagna.
 
 ## Motivazione
@@ -47,9 +47,9 @@ Sono screenshot dello **stesso HTML/CSS** usato nel sorgente, renderizzato in Ch
 
 ## Decisioni prima del rilascio
 
-- [ ] Revisione visuale del proprietario su poster e banner — non trattare questo documento come approvazione implicita.
+- [x] Revisione visuale delle anteprime poster e banner: il proprietario ha confermato che la direzione HTML/CSS è quella desiderata e ha autorizzato la prova in CableCheck Collaudo (2026-11-01).
 - [ ] Verifica AppCommunications publisher v2 sul source della PR e feed Collaudo/Produzione.
 - [ ] Prova su CableCheck Collaudo installato: zoom e layout, modalità modale/Novità, CTA Google Play, segnalazioni WebView e fallback.
-- [ ] Solo dopo review/CI, fare merge nel catalogo principale e lanciare un **nuovo run da main** del publisher. Confermare `published` revision 4 solo Collaudo, `production` invariata. Nessun FCM.
+- [ ] Dopo verifica del contratto e merge, lanciare un **nuovo run da main** del publisher; confermare `published` revision 4 **solo Collaudo**, `production` invariata. Nessun FCM. Il smoke su dispositivo deve ancora essere eseguito dall'utente.
 
-**Campagna r2:** resta in `Content-/main` e `Content-/published`. La r4 di questa PR ha `status:published` unicamente sul branch Draft per consentire eventuali test in isolamento; non è distribuita.
+**Distinzione distribuzione:** la r2 resta nel feed `Content-/published` finché non viene eseguito il workflow publisher dal nuovo `main`. La r4 usa `status:published` nel file JSON per la compilazione, ma ciò non equivale a pubblicazione né a verifica APK. La prova è autorizzata **solo per Collaudo**.
