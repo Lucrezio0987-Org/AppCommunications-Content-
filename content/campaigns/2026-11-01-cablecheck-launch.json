@@ -7,7 +7,7 @@
     "product.cablecheck"
   ],
   "environments": [
-    "collaudo"
+    "production"
   ],
   "placements": [
     "launch_modal",
